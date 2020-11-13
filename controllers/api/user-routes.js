@@ -1,5 +1,5 @@
 const router = require("express").Router();
-const { User } = require("../../models");
+const { User, Teacher, Student } = require("../../models");
 
 router.get("/", (req, res) => {
   User.findAll({
@@ -18,6 +18,14 @@ router.get("/:id", (req, res) => {
     where: {
       id: req.params.id,
     },
+    include: [
+      {
+        model: Student,
+      },
+      {
+        model: Teacher,
+      },
+    ],
   })
     .then((dbUserData) => {
       if (!dbUserData) {
@@ -38,7 +46,7 @@ router.post("/", (req, res) => {
     email: req.body.email,
     role: req.body.role,
     password: req.body.password,
-    company_id: req.body.company_id
+    company_id: req.body.company_id,
   })
     .then((dbUserData) => {
       req.session.save(() => {
