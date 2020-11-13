@@ -25,3 +25,5 @@ VocalPart.init(
         modelName: 'vocalpart'
       }
 )
+
+module.exports = VocalPart;

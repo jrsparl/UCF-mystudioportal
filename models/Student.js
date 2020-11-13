@@ -36,13 +36,9 @@ Student.init(
         //         key: 'id'
         //     }
         // },
-        vocalPart_id:{
-            type: DataTypes.INTEGER,
-            allowNull: false,
-            references: {
-                model: 'vocalpart',
-                key: 'id'
-            }
+        vocalPartName:{
+            type: DataTypes.STRING,
+            allowNull: false
         },
         birthday: {
             type: DataTypes.DATE,
@@ -77,3 +73,5 @@ Student.init(
         modelName: 'student'
       }
 )
+
+module.exports = Student;

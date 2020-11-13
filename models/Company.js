@@ -70,3 +70,5 @@ Company.init(
             modelName: 'company'
           }
 )
+
+module.exports = Company;

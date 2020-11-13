@@ -51,3 +51,5 @@ Teacher.init(
         modelName: 'teacher'
       }
 )
+
+module.exports = Teacher;
