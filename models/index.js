@@ -47,4 +47,4 @@ Comment.belongsTo(Teacher, {
 
 
 
-module.exports = { User, Teacher, Student, Company };
+module.exports = { User, Teacher, Student, Company, Comment };
