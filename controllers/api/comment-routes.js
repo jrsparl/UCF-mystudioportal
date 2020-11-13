@@ -1,6 +1,6 @@
 const router = require("express").Router();
 const { Comment } = require("../../models");
-const withAuth = require("../../utils/auth")
+const withAuth = require("../../utils/auth");
 
 router.get("/", (req, res) => {
   Comment.findAll()
@@ -24,6 +24,30 @@ router.post("/", (req, res) => {
     });
 });
 
+router.put("/:id", (req, res) => {
+  Comment.update(
+    {
+      comment_text: req.body.comment_text,
+    },
+    {
+      where: {
+        id: req.params.id,
+      },
+    }
+  )
+    .then((dbCommentData) => {
+      if (!dbCommentData) {
+        res.status(404).json({ message: "No Comment found with this id" });
+        return;
+      }
+      res.json(dbCommentData);
+    })
+    .catch((err) => {
+      console.log(err);
+      res.status(500).json(err);
+    });
+});
+
 router.delete("/:id", (req, res) => {
   Comment.destroy({
     where: {
@@ -44,4 +68,3 @@ router.delete("/:id", (req, res) => {
 });
 
 module.exports = router;
-
