@@ -31,14 +31,26 @@ User.init(
         isEmail: true
       }
     },
+    role: {
+      type: DataTypes.STRING,
+      allowNull: false
+    },
     password: {
       type: DataTypes.STRING,
       allowNull: false,
       validate: {
         len: [4]
       }
-    }
+    },
+    company_id: {
+      type: DataTypes.INTEGER,
+      references: {
+        model: 'company',
+        key: 'id'
+      }
+    },
   },
+  
   {
     hooks: {
       // set up beforeCreate lifecycle "hook" functionality
