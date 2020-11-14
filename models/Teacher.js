@@ -1,55 +1,42 @@
-const { Model, DataTypes } = require('sequelize');
-const sequelize = require('../config/connection');
+const { Model, DataTypes } = require("sequelize");
+const sequelize = require("../config/connection");
 
-class Teacher extends Model { }
+class Teacher extends Model {}
 
-
-Teacher.init(
-    {
-        id: {
-            type: DataTypes.INTEGER,
-            allowNull: false,
-            primaryKey: true,
-            autoIncrement: true
-        },
-        user_id: {
-            type: DataTypes.INTEGER,
-            allowNull: false,
-            references: {
-                model: 'user',
-                key: 'id'
-            }
-        },
-        company_id: {
-            type: DataTypes.INTEGER,
-            allowNull: false,
-            references: {
-                model: 'company',
-                key: 'id'
-            }
-        },
-        birthday: {
-            type: DataTypes.DATE,
-        },
-        profilePic: {
-            type: DataTypes.BLOB('long'),
-            allowNull: true,
-        },
-        coachingGenre: {
-            type: DataTypes.STRING
-        },
-        coachingLevel: {
-            type: DataTypes.STRING
-        },
-
-
+Teacher.init({
+    id: {
+        type: DataTypes.INTEGER,
+        allowNull: false,
+        primaryKey: true,
+        autoIncrement: true,
     },
-    {
-        sequelize,
-        freezeTableName: true,
-        underscored: true,
-        modelName: 'teacher'
-      }
-)
+    user_id: {
+        type: DataTypes.INTEGER,
+        allowNull: false,
+        references: {
+            model: "user",
+            key: "id",
+        },
+    },
+
+    birthday: {
+        type: DataTypes.DATE,
+    },
+    profile_pic: {
+        type: DataTypes.BLOB("long"),
+        allowNull: true,
+    },
+    coaching_genre: {
+        type: DataTypes.STRING,
+    },
+    coaching_level: {
+        type: DataTypes.STRING,
+    },
+}, {
+    sequelize,
+    freezeTableName: true,
+    underscored: true,
+    modelName: "teacher",
+});
 
 module.exports = Teacher;
