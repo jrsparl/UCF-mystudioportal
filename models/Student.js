@@ -27,14 +27,7 @@ Student.init(
         key: "id",
       },
     },
-    // company_id: {
-    //     type: DataTypes.INTEGER,
-    //     allowNull: false,
-    //     references: {
-    //         model: 'company',
-    //         key: 'id'
-    //     }
-    // },
+    
     vocal_part_name: {
       type: DataTypes.STRING,
       allowNull: false,
