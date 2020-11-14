@@ -1,5 +1,5 @@
 const router = require("express").Router();
-const { Student, User } = require("../../models");
+const { Student, User, Comment } = require("../../models");
 
 router.get("/", (req, res) => {
   Student.findAll({
@@ -35,6 +35,19 @@ router.get("/:id", (req, res) => {
       }
       res.json(dbStudentData);
     })
+    .catch((err) => {
+      console.log(err);
+      res.status(500).json(err);
+    });
+});
+
+router.get("/comments/:id", (req, res) => {
+  Comment.findAll({
+    where: {
+      student_id: req.params.id
+    }
+  })
+    .then((dbCommentData) => res.json(dbCommentData))
     .catch((err) => {
       console.log(err);
       res.status(500).json(err);

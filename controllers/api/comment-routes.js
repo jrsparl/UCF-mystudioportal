@@ -11,6 +11,7 @@ router.get("/", (req, res) => {
     });
 });
 
+
 router.get("/:id", (req, res) => {
   Comment.findOne({
     where: {
@@ -49,7 +50,7 @@ router.get("/:id", (req, res) => {
 router.post("/", (req, res) => {
   Comment.create({
     comment_text: req.body.comment_text,
-    teacher_id: req.session.teacher_id,
+    teacher_id: req.body.teacher_id,
     student_id: req.body.student_id,
   })
     .then((dbCommentData) => res.json(dbCommentData))

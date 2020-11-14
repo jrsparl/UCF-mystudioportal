@@ -41,11 +41,11 @@ Comment.belongsTo(Teacher, {
   foreignKey: "teacher_id",
 });
 
-User.hasMany(Comment, {
-  foreignKey: "id",
-});
-Comment.belongsTo(User, {
-  foreignKey: "id",
-});
+// User.hasMany(Comment, {
+//   foreignKey: "id",
+// });
+// Comment.belongsTo(User, {
+//   foreignKey: "id",
+// });
 
 module.exports = { User, Teacher, Student, Company, Comment };
