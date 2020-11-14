@@ -51,17 +51,17 @@ Company.init(
               len: [1]
             }
           },
-          username: {
-            type: DataTypes.STRING,
-            allowNull: false
-          },
-          password: {
-            type: DataTypes.STRING,
-            allowNull: false,
-            validate: {
-              len: [4]
-            }
-          }
+          // username: {
+          //   type: DataTypes.STRING,
+          //   allowNull: false
+          // },
+          // password: {
+          //   type: DataTypes.STRING,
+          //   allowNull: false,
+          //   validate: {
+          //     len: [4]
+          //   }
+          // }
         },
         {
             sequelize,

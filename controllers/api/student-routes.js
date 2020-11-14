@@ -73,6 +73,25 @@ router.post("/", (req, res) => {
     });
 });
 
+router.put("/:id", (req, res) => {
+  Student.update(req.body, {
+    where: {
+      id: req.params.id,
+    },
+  })
+    .then((dbStudentData) => {
+      if (!dbStudentData) {
+        res.status(404).json({ message: "No student found with this id" });
+        return;
+      }
+      res.json(dbStudentData);
+    })
+    .catch((err) => {
+      console.log(err);
+      res.status(500).json(err);
+    });
+});
+
 router.delete("/:id", (req, res) => {
   Student.destroy({
     where: {

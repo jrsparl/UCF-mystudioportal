@@ -19,14 +19,14 @@ Teacher.init(
         key: "id",
       },
     },
-    company_id: {
-      type: DataTypes.INTEGER,
-      allowNull: false,
-      references: {
-        model: "company",
-        key: "id",
-      },
-    },
+    // company_id: {
+    //   type: DataTypes.INTEGER,
+    //   allowNull: false,
+    //   references: {
+    //     model: "company",
+    //     key: "id",
+    //   },
+    // },
     birthday: {
       type: DataTypes.DATE,
     },

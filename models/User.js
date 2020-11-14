@@ -31,6 +31,14 @@ User.init(
         isEmail: true
       }
     },
+    first_name: {
+      type: DataTypes.STRING,
+      allowNull: false
+    },
+    last_name: {
+      type: DataTypes.STRING,
+      allowNull: false
+    },
     role: {
       type: DataTypes.STRING,
       allowNull: false
@@ -44,6 +52,7 @@ User.init(
     },
     company_id: {
       type: DataTypes.INTEGER,
+      allowNull: true,
       references: {
         model: 'company',
         key: 'id'

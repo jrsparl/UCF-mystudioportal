@@ -1,5 +1,6 @@
 const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../config/connection');
+const { v4: uuidv4 } = require('uuid');
 
 class SongAssignments extends Model { }
 

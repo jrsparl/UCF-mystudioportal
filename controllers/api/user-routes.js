@@ -4,6 +4,14 @@ const { User, Teacher, Student } = require("../../models");
 router.get("/", (req, res) => {
   User.findAll({
     attributes: { exclude: ["password"] },
+    include: [
+      {
+        model: Student,
+      },
+      {
+        model: Teacher,
+      },
+    ],
   })
     .then((dbUserData) => res.json(dbUserData))
     .catch((err) => {
@@ -45,6 +53,8 @@ router.post("/", (req, res) => {
     username: req.body.username,
     email: req.body.email,
     role: req.body.role,
+    first_name: req.body.first_name,
+    last_name: req.body.last_name,
     password: req.body.password,
     company_id: req.body.company_id,
   })
@@ -58,6 +68,26 @@ router.post("/", (req, res) => {
 
         res.json(dbUserData);
       });
+    })
+    .catch((err) => {
+      console.log(err);
+      res.status(500).json(err);
+    });
+});
+
+router.put("/:id", (req, res) => {
+  User.update(req.body, {
+    individualHooks: true,
+    where: {
+      id: req.params.id,
+    },
+  })
+    .then((dbUserData) => {
+      if (!dbUserData) {
+        res.status(404).json({ message: "No user found with this id" });
+        return;
+      }
+      res.json(dbUserData);
     })
     .catch((err) => {
       console.log(err);
