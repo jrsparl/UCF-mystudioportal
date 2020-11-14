@@ -14,11 +14,11 @@ async function loginFormHandler(event) {
             headers: { 'Content-Type': 'application/json' }
         });
 
-        if (response.ok && response.role === "teacher") {
-            document.location.replace('/teacherDashboard/');
+        if (response.ok && response.user.role === "teacher") {
+            document.location.replace('/teacherhome/');
         }
-        if (response.ok && response.role === "student") {
-            document.location.replace('/studentDashboard/');
+        if (response.ok && response.user.role === "student") {
+            document.location.replace('/studenthome/');
         } else {
             alert(response.statusText);
         }
