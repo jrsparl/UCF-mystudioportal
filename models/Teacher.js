@@ -30,14 +30,14 @@ Teacher.init(
     birthday: {
       type: DataTypes.DATE,
     },
-    profilePic: {
+    profile_pic: {
       type: DataTypes.BLOB("long"),
       allowNull: true,
     },
-    coachingGenre: {
+    coaching_genre: {
       type: DataTypes.STRING,
     },
-    coachingLevel: {
+    coaching_level: {
       type: DataTypes.STRING,
     },
   },

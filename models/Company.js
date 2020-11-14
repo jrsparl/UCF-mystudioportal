@@ -44,7 +44,7 @@ Company.init(
               len: [1]
             }
           },
-          zipCode:{
+          zip_code:{
             type: DataTypes.STRING,
             allowNull: false,
             validate: {

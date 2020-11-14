@@ -19,15 +19,15 @@ Repertoire.init(
               key: 'id'
             }
           },
-        songName: {
+        song_name: {
             type: DataTypes.STRING,
             allowNull: false,
         },
-        songWritter: {
+        song_writter: {
             type: DataTypes.STRING,
             allowNull: false,
         },
-        albumName: {
+        album_name: {
             type: DataTypes.STRING,
             allowNull: false,
         },

@@ -12,7 +12,7 @@ VocalPart.init(
             primaryKey: true,
             autoIncrement: true
         },
-        vocalPartName: {
+        vocal_part_name: {
             type: DataTypes.STRING,
             allowNull: false,
         },

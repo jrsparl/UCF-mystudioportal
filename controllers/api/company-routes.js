@@ -38,7 +38,7 @@ router.post("/", (req, res) => {
     street_address: req.body.street_address,
     city: req.body.city,
     state: req.body.state,
-    zipCode: req.body.zipCode,
+    zip_code: req.body.zip_code,
     username: req.body.username,
     password: req.body.password,
   })
@@ -49,7 +49,7 @@ router.post("/", (req, res) => {
         req.session.street_address = dbCompanyData.street_address;
         req.session.city = dbCompanyData.city;
         req.session.state = dbCompanyData.state;
-        req.session.zipCode = dbCompanyData.zipCode;
+        req.session.zip_code = dbCompanyData.zip_code;
         req.session.username = dbCompanyData.username;
         req.session.loggedIn = true;
 

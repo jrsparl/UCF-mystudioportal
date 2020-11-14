@@ -46,17 +46,17 @@ router.post("/", (req, res) => {
     user_id: req.body.user_id,
     // company_id: req.body.company_id,
     birthday: req.body.birthday,
-    profilePic: req.body.profilePic,
-    coachingGenre: req.body.coachingGenre,
-    coachingLevel: req.body.coachingLevel,
+    profile_pic: req.body.profile_pic,
+    coaching_genre: req.body.coaching_genre,
+    coaching_level: req.body.coaching_level,
   })
     .then((dbTeacherData) => {
       (req.session.user_id = dbTeacherData.id),
         // (req.session.company_id = dbTeacherData.company_id),
         (req.session.birthday = dbTeacherData.birthday),
-        (req.session.profilePic = dbTeacherData.profilePic),
-        (req.session.coachingGenre = dbTeacherData.coachingGenre),
-        (req.session.coachingLevel = dbTeacherData.coachingLevel),
+        (req.session.profile_pic = dbTeacherData.profile_pic),
+        (req.session.coaching_genre = dbTeacherData.coaching_genre),
+        (req.session.coaching_level = dbTeacherData.coaching_level),
         res.json(dbTeacherData);
     })
     .catch((err) => {

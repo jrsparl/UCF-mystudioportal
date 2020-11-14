@@ -12,18 +12,18 @@ Excercises.init(
             primaryKey: true,
             autoIncrement: true
         },
-        vocalPart_id: {
+        vocal_part_id: {
             type: DataTypes.INTEGER,
             references: {
               model: 'vocalpart',
               key: 'id'
             }
           },
-        exerciseLetter: {
+        exercise_letter: {
             type: DataTypes.STRING,
             allowNull: false,
         },
-        scaleDirection: {
+        scale_direction: {
             type: DataTypes.STRING,
             allowNull: false,
         },

@@ -35,30 +35,30 @@ Student.init(
     //         key: 'id'
     //     }
     // },
-    vocalPartName: {
+    vocal_part_name: {
       type: DataTypes.STRING,
       allowNull: false,
     },
     birthday: {
       type: DataTypes.DATE,
     },
-    profilePic: {
+    profile_pic: {
       type: DataTypes.BLOB("long"),
       allowNull: true,
     },
-    vocalStyle: {
+    vocal_style: {
       type: DataTypes.STRING,
     },
-    gradeLevel: {
+    grade_level: {
       type: DataTypes.STRING,
     },
     gender: {
       type: DataTypes.STRING,
     },
-    guardianEmail: {
+    guardian_email: {
       type: DataTypes.STRING,
     },
-    roomNumber: {
+    room_number: {
       type: DataTypes.INTEGER,
       allowNull: false,
     },
