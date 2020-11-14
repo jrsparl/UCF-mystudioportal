@@ -27,6 +27,15 @@ Student.belongsTo(User, {
   foreignKey: "user_id",
 });
 
+Teacher.hasMany(Student, {
+  foreignKey: "teacher_id"
+});
+
+Student.belongsTo(Teacher, {
+  foreignKey: "teacher_id"
+});
+
+
 Student.hasMany(Comment, {
   foreignKey: "student_id",
 });

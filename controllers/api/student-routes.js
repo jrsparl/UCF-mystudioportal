@@ -26,6 +26,13 @@ router.get("/:id", (req, res) => {
       {
         model: User,
       },
+      {
+        model: Teacher,
+        include: {
+          model: User,
+          attributes: ["username", "first_name", "last_name"]
+        },
+      },
     ],
   })
     .then((dbStudentData) => {
