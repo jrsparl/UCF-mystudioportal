@@ -3,40 +3,43 @@ const sequelize = require("../config/connection");
 
 class Teacher extends Model {}
 
-Teacher.init({
+Teacher.init(
+  {
     id: {
-        type: DataTypes.INTEGER,
-        allowNull: false,
-        primaryKey: true,
-        autoIncrement: true,
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      primaryKey: true,
+      autoIncrement: true,
     },
     user_id: {
-        type: DataTypes.INTEGER,
-        allowNull: false,
-        references: {
-            model: "user",
-            key: "id",
-        },
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      references: {
+        model: "user",
+        key: "id",
+      },
     },
-
+   
     birthday: {
-        type: DataTypes.DATE,
+      type: DataTypes.DATE,
     },
     profile_pic: {
-        type: DataTypes.BLOB("long"),
-        allowNull: true,
+      type: DataTypes.BLOB("long"),
+      allowNull: true,
     },
     coaching_genre: {
-        type: DataTypes.STRING,
+      type: DataTypes.STRING,
     },
     coaching_level: {
-        type: DataTypes.STRING,
+      type: DataTypes.STRING,
     },
-}, {
+  },
+  {
     sequelize,
     freezeTableName: true,
     underscored: true,
     modelName: "teacher",
-});
+  }
+);
 
 module.exports = Teacher;
