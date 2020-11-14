@@ -1,22 +1,30 @@
 const router = require("express").Router();
-const { User, Student, Comment } = require("../models");
+const { User, Student, Comment, Teacher } = require("../models");
 
 
 
 // get all comments for student
-router.get("/", (req, res) => {
+router.get("/:id", (req, res) => {
   Comment.findAll({
     where: {
-      user_id: req.session.user_id,
+      student_id: req.params.id
     },
-    attributes: ["id", "comment_text", "createdAt"],
-    include: {
-      model: Comment,
-      attributes: ["id", "comment_text", "user_id", "createdAt"],
-      include: {
-        model: User,
-        attributes: ["username"],
+    include: [
+      {
+        model: Teacher,
+        attributes: ["id"],
+        include: {
+          model: User,
+          attributes: ["username", "first_name", "last_name"]
+        },
       },
-    },
-  });
+    ],
+  })
+    .then((dbCommentData) => res.json(dbCommentData))
+    .catch((err) => {
+      console.log(err);
+      res.status(500).json(err);
+    });
 });
+
+module.exports = router;
