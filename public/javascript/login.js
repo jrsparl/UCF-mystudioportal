@@ -14,8 +14,19 @@ async function loginFormHandler(event) {
             headers: { 'Content-Type': 'application/json' }
         });
 
+        debugger
         if (response.ok) {
-            document.location.replace('/dashboard');
+            response.json().then(function (data) {
+                console.log(data.user.role);
+                role = data.user.role
+                if (role === "teacher"){
+                    document.location.replace('/teacherhome');
+                } else {
+                    document.location.replace('/studenthome');
+                }
+                
+            })
+            
         } else {
             alert(response.statusText);
         }

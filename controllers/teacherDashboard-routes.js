@@ -1,5 +1,5 @@
-// const router = require("express").Router();
-// const { User, Student, Comment, Teacher } = require("../models");
+const router = require("express").Router();
+const { User, Student, Comment, Teacher } = require("../models");
 
 // // get all students for teacher
 // router.get("/:id", (req, res) => {
@@ -21,4 +21,10 @@
 //     });
 // });
 
-// module.exports = router;
+router.get("/", (req, res) => {
+    console.log(req.session);
+    res.render("teacherhome", { loggedIn: true });
+  });
+
+
+module.exports = router;
