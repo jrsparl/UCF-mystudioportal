@@ -15,9 +15,7 @@ async function loginFormHandler(event) {
         });
 
         if (response.ok) {
-            document.location.replace('/teacherhome');
-        } else if (response.ok && response.user.role === "student") {
-            document.location.replace('/studenthome/');
+            document.location.replace('/dashboard');
         } else {
             alert(response.statusText);
         }
