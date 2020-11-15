@@ -13,6 +13,4 @@ router.use('/studenthome', studentDashRoutes);
 
 
 
-
-
 module.exports = router;
