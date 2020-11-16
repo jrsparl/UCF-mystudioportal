@@ -1,0 +1,36 @@
+<br>
+<div class="card">
+    <div class="card-header" id="company-info">
+        {{user.company.company_name}}
+    </div>
+    <div class="card-body teacher_edit-form">
+        <form>
+            <div class="form-group hidden">
+               <label for="teacher_id-edit">Teacher ID</label>
+                <p id="teacher_id-edit">{{user.teacher.id}}</p>
+            </div>
+            <div class="form-group">
+               <label for="first_last_name-display">Name</label>
+                <p id="first_last_name-display">{{user.first_name}} {{user.last_name}}</p>
+            </div>
+            <div class="form-group">
+                <label for="birthday-edit">Birthday</label>
+                <input type="text" class="form-control" id="birthday-edit" value= {{user.teacher.birthday}}>
+            </div>
+            <div class="form-group">
+                <label for="genre-edit">Coaching Genre</label>
+                <input type="text" class="form-control" id="genre-edit" value= {{user.teacher.coaching_genre}}>
+            </div>
+            <div class="form-group">
+                <label for="level-edit">Coaching Level</label>
+                <input type="text" class="form-control" id="level-edit" value= {{user.teacher.coaching_level}}>
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button><br>
+        </form>
+    </div>
+</div>
+<br>
+
+
+
+<script src="/javascript/editteacherprofile.js"></script>

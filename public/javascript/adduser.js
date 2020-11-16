@@ -7,9 +7,7 @@ async function UserFormHandler(event) {
     const role = document.querySelector('#role-entry').value.trim();
     const first_name = document.querySelector('#first_name-entry').value.trim();
     const last_name = document.querySelector('#last_name-entry').value.trim();
-    const company_id = document.querySelector('#company_id-entry').value.trim();
-
-   
+    const company_id = document.getElementById('company_id-entry').textContent;
         
 
 

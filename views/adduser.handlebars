@@ -1,13 +1,13 @@
 <br>
 <div class="card">
     <div class="card-header" id="company-info">
-        {{user.company.company_name}} ({{user.company.id}})
+        {{user.company.company_name}}
     </div>
     <div class="card-body user_entry-form">
         <form>
-            <div class="form-group">
+            <div class="form-group hidden">
                <label for="username-entry">Company ID</label>
-                <input type="text" class="form-control" id="company_id-entry">
+                <p id="company_id-entry">{{user.company.id}}</p>
             </div>
             <div class="form-group">
                 <label for="username-entry">Username</label>

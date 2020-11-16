@@ -66,7 +66,7 @@ router.get("/adduser", withAuth, (req, res) => {
 
 
  // get user details for logged in person
-router.get("/createprofile", withAuth, (req, res) => {
+router.get("/createteacherprofile", withAuth, (req, res) => {
 
     User.findOne({
      where: {
@@ -74,13 +74,22 @@ router.get("/createprofile", withAuth, (req, res) => {
      },
      
      attributes: [
-         "company_id, id"
+        "id",
+        "first_name",
+        "last_name"
+    ],
+
+     include: [
+        {
+            model: Company,
+            attributes: ["id", "company_name"] 
+        }
      ]
        
    })
    .then(dbUserData => {
      const user = dbUserData.get({plain: true});
-     res.render('createprofile', { user, loggedIn: true });
+     res.render('createteacherprofile', { user, loggedIn: true });
    })
      .catch((err) => {
        console.log(err);
@@ -89,7 +98,7 @@ router.get("/createprofile", withAuth, (req, res) => {
  });
 
  // get user details for logged in person
-router.get("/editprofile", withAuth, (req, res) => {
+router.get("/editteacherprofile", withAuth, (req, res) => {
 
     User.findOne({
      where: {
@@ -97,13 +106,22 @@ router.get("/editprofile", withAuth, (req, res) => {
      },
      
      attributes: [
-         "company_id, id"
+         "company_id", 
+         "id",
+         "first_name",
+         "last_name"
+     ],
+     include: [
+        {
+            model: Teacher,
+            attributes: ["id", "birthday", "coaching_genre", "coaching_level"] 
+        }
      ]
        
    })
    .then(dbUserData => {
      const user = dbUserData.get({plain: true});
-     res.render('editprofile', { user, loggedIn: true });
+     res.render('editteacherprofile', { user, loggedIn: true });
    })
      .catch((err) => {
        console.log(err);
