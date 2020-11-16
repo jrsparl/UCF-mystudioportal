@@ -14,10 +14,10 @@ async function loginFormHandler(event) {
             headers: { 'Content-Type': 'application/json' }
         });
 
-        debugger
+       
         if (response.ok) {
             response.json().then(function (data) {
-                console.log(data.user.role);
+                console.log(data);
                 role = data.user.role
                 if (role === "teacher"){
                     document.location.replace('/teacherhome');

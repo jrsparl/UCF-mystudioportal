@@ -1,7 +1,7 @@
 const router = require("express").Router();
 const { User, Student, Comment, Teacher } = require("../models");
 
-// // get all comments for student
+// get all comments for student
 // router.get("/", (req, res) => {
 //   Comment.findAll({
 //     where: {
@@ -27,7 +27,8 @@ const { User, Student, Comment, Teacher } = require("../models");
 
 
 router.get("/", (req, res) => {
-    console.log(req.session.user_id);
+    let id = req.session.user_id
+    console.log(id);
     res.render("studenthome", { loggedIn: true });
   });
 
