@@ -1,0 +1,48 @@
+<br>
+<div class="card">
+    <div class="card-header" id="company-info">
+        {{user.company.company_name}}
+    </div>
+    <div class="card-body student_entry-form">
+        <form>
+            <div class="form-group hidden">
+               <label for="student_user_id-entry">User ID</label>
+                <p id="student_user_id-entry">{{user.id}}</p>
+            </div>
+            <div class="form-group">
+               <label for="first_last_name-display">Name</label>
+                <p id="first_last_name-display">{{user.first_name}} {{user.last_name}}</p>
+            </div>
+            <div class="form-group">
+                <label for="student-birthday-entry">Birthday</label>
+                <input type="text" class="form-control" id="student-birthday-entry">
+            </div>
+            <div class="form-group">
+                <label for="vocal_part-entry">Vocal Part</label>
+                <input type="text" class="form-control" id="vocal_part-entry">
+            </div>
+            <div class="form-group">
+                <label for="vocal_style-entry">Vocal Style</label>
+                <input type="text" class="form-control" id="vocal_style-entry">
+            </div>
+            <div class="form-group">
+                <label for="grade_level-entry">Grade Level</label>
+                <input type="text" class="form-control" id="grade_level-entry">
+            </div>
+             <div class="form-group">
+                <label for="gender-entry">Gender</label>
+                <input type="text" class="form-control" id="gender-entry">
+            </div>
+             <div class="form-group">
+                <label for="room_number-entry">Room Number</label>
+                <input type="text" class="form-control" id="room_number-entry">
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button><br>
+        </form>
+    </div>
+</div>
+<br>
+
+
+
+<script src="/javascript/createstudentprofile.js"></script>

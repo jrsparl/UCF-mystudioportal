@@ -1,0 +1,47 @@
+<br>
+<div class="card">
+    <div class="card-header" id="company-info">
+        {{user.company.company_name}}
+    </div>
+    <div class="card-body student_edit-form">
+        <form>
+            <div class="form-group hidden">
+               <label for="student_id-edit">Student ID</label>
+                <p id="student_id-edit">{{user.student.id}}</p>
+            </div>
+            <div class="form-group">
+               <label for="first_last_name-display">Name</label>
+                <p id="first_last_name-display">{{user.first_name}} {{user.last_name}}</p>
+            </div>
+           <div class="form-group">
+                <label for="student-birthday-edit">Birthday</label>
+                <input type="text" class="form-control" id="student-birthday-edit" value= {{user.student.birthday}}>
+            </div>
+            <div class="form-group">
+                <label for="vocal_part-edit">Vocal Part</label>
+                <input type="text" class="form-control" id="vocal_part-edit" value= {{user.student.vocal_part_name}}>
+            </div>
+            <div class="form-group">
+                <label for="vocal_style-edit">Vocal Style</label>
+                <input type="text" class="form-control" id="vocal_style-edit" value= {{user.student.vocal_style}}>
+            </div>
+            <div class="form-group">
+                <label for="grade_level-edit">Grade Level</label>
+                <input type="text" class="form-control" id="grade_level-edit" value= {{user.student.grade_level}}>
+            </div>
+             <div class="form-group">
+                <label for="gender-edit">Gender</label>
+                <input type="text" class="form-control" id="gender-edit" value= {{user.student.gender}}>
+            </div>
+             <div class="form-group">
+                <label for="room_number-edit">Room Number</label>
+                <input type="text" class="form-control" id="room_number-edit" value= {{user.student.room_number}}>
+            <button type="submit" class="btn btn-primary">Submit</button><br>
+        </form>
+    </div>
+</div>
+<br>
+
+
+
+<script src="/javascript/editstudentprofile.js"></script>
