@@ -13,13 +13,24 @@
   <div class="container-fluid">
     <header>
       <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <a class="navbar-brand" href="/">MyStudioPortal</a>
+        <li class="navbar-brand">MyStudioPortal</li>
+
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText"
           aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
-        </button> 
+        </button>
         <div class="collapse navbar-collapse" id="navbarText">
           <ul class="navbar-nav mr-auto">
+            {{#if user.teacher.id}}
+            <li class="nav-item active">
+              <a class="nav-link" href="/teacherhome">Teacher Home</a>
+            </li>
+            {{/if}}
+            {{#if user.student.id}}
+            <li class="nav-item">
+              <a class="nav-link" href="/teacherhome">Student Home</a>
+            </li>
+            {{/if}}
             {{#if loggedIn}}
             <li class="nav-item">
               <a class="nav-link" href="/" id="logout">logout</a>
@@ -31,7 +42,7 @@
             {{/if}}
             {{#if user.teacher.id}}
             <li class="nav-item">
-            <a class="nav-link" href="/teacherhome/adduser">Add User</a>
+              <a class="nav-link" href="/teacherhome/adduser">Add User</a>
             </li>
             {{/if}}
           </ul>
