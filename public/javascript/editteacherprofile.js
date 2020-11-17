@@ -5,6 +5,7 @@ async function EditTeacherFormHandler(event) {
     const coaching_genre = document.querySelector('#genre-edit').value.trim();
     const coaching_level = document.querySelector('#level-edit').value.trim();
     const teacher_id = document.getElementById('teacher_id-edit').textContent;
+    //const username = document.querySelector('#username-edit').value.trim();
 
 
 
@@ -12,6 +13,7 @@ async function EditTeacherFormHandler(event) {
         const response = await fetch('/api/teachers/' + teacher_id, {
             method: 'put',
             body: JSON.stringify({
+                //username,
                 birthday,
                 coaching_genre,
                 coaching_level,
@@ -22,7 +24,7 @@ async function EditTeacherFormHandler(event) {
 
         if (response.ok) {
             console.log('teacher edited')
-            document.location.replace('/teacherhome')
+            document.location.replace('/teacherhome/teacherprofile')
         } else {
             alert(response.statusText);
         }

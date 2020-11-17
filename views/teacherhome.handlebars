@@ -1,58 +1,37 @@
 <div class="profile-home p-4">
   <h1 class="white-text">
-    Hi {{user.first_name}} {{user.last_name}} good to see you today!
+    Welcome back!
   </h1>
   {{#if user.teacher.id}}
 
   <div class="row">
     <div class="col-3">
-      <div class="card" style="width: 18rem;">
-        <h4 class="card-title">Teacher Profile</h4>
-        <img src="../images/JSparling.jpg" class="card-img-top" alt="Test image">
+      <div class="card bg-primary" style="width: 18rem;">
         <div class="card-body">
-          <h5 class="card-text">{{user.first_name}} {{user.last_name}} </h5>
+          <h4 class="card-text"> {{user.first_name}} {{user.last_name}} </h4>
         </div>
+        <img src="../images/JSparling.jpg" class="card-img-top" alt="Test image">
+        {{!-- <div class="card-body">
+          <h5 class="card-text">{{user.first_name}} {{user.last_name}} </h5>
+        </div> --}}
+
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item bg-primary">
+            <h5>Genre: {{user.teacher.coaching_genre}}</h5>
+          </li>
+        </ul>
         <div class="card-body">
-
-          <a class="card-link" href="/teacherhome/teacherprofile">View Profile</a>
-
+          <a class="card-link white-text btn btn-dark" href="/teacherhome/teacherprofile">View Profile</a>
+          <a class="card-link white-text btn btn-dark" href="/teacherhome/{{user.teacher.id}}">View
+            Class</a>
         </div>
       </div>
-      {{!-- <div class="col-9">
-        <div class="tab-content" id="v-pills-tabContent">
-          <div id="v-pills-profile" role="tabpanel" class="tab-pane fade">
-            <ul class="list-group list-group-flush">
-              <li class="list-group-item">Birthday: {{format_date user.teacher.birthday}}</li>
-              <li class="list-group-item">coaching genre: {{user.teacher.coaching_genre}}</li>
-              <li class="list-group-item">coaching level: {{user.teacher.coaching_level}}</li>
-            </ul>
-          </div> --}}
-      {{!-- <div class="tab-pane fade" id="v-pills-settings" role="tabpanel" aria-labelledby="v-pills-settings-tab">... --}}
     </div>
-  </div>
-</div>
-</div>
-</div>
-
-{{!-- <div class="card" style="width: 18rem;">
-  <h4 class="card-title">Teacher Profile</h4>
-  <img src="" class="card-img-top" alt="Test image">
-  <div class="card-body">
-
-    <h5 class="card-text">{{user.first_name}} {{user.last_name}} </h5>
-  </div>
-  <ul class="list-group list-group-flush">
-    <li class="list-group-item">Birthday: {{format_date user.teacher.birthday}}</li>
-    <li class="list-group-item">coaching genre: {{user.teacher.coaching_genre}}</li>
-    <li class="list-group-item">coaching level: {{user.teacher.coaching_level}}</li>
-  </ul>
-  <div class="card-body">
-
-    <a class="card-link" href="/teacherhome/editteacherprofile">Edit My Profile</a>
-
 
   </div>
-</div> --}}
+</div>
+
+
 
 
 {{else}}

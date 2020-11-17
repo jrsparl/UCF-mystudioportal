@@ -1,5 +1,5 @@
 const router = require("express").Router();
-const { Teacher, User } = require("../../models");
+const { Teacher, User, Student } = require("../../models");
 
 router.get("/", (req, res) => {
   Teacher.findAll({
@@ -25,6 +25,12 @@ router.get("/:id", (req, res) => {
     include: [
       {
         model: User,
+      },
+      {
+        model: Student,
+        include: {
+          model: User
+        }
       },
     ],
   })
@@ -70,6 +76,11 @@ router.put("/:id", (req, res) => {
     where: {
       id: req.params.id,
     },
+    include: [
+      {
+        model: User,
+      },
+    ],
   })
     .then((dbTeacherData) => {
       if (!dbTeacherData) {
