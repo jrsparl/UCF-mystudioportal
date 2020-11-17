@@ -1,0 +1,54 @@
+.container,
+.container-fluid,
+.container-lg,
+.container-md,
+.container-sm,
+.container-xl {
+    padding-right: 0px;
+    padding-left: 0px;
+}
+
+.hero {
+    justify-content: center;
+    flex-wrap: wrap;
+    background-image: url("../images/back-ground.png");
+    height: 700px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.head-text {
+    color: white;
+    text-align: left;
+    opacity: 1;
+    font-size: 50px;
+    font-family: "Montserrat" !important;
+    font-weight: 700 !important;
+    letter-spacing: -3px !important;
+}
+
+.padding {
+    padding: 50px;
+}
+
+.white-text {
+    color: white;
+}
+
+.log-in {
+    background-image: url("../images/log-in.png");
+    background-position: left;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.profile-home {
+    justify-content: center;
+    flex-wrap: wrap;
+    background-image: url("../images/profile-home.png");
+    height: 700px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}

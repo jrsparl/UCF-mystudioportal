@@ -6,7 +6,7 @@ async function EditTeacherFormHandler(event) {
     const coaching_level = document.querySelector('#level-edit').value.trim();
     const teacher_id = document.getElementById('teacher_id-edit').textContent;
 
-    
+
 
     if (birthday && coaching_genre && coaching_level && teacher_id) {
         const response = await fetch('/api/teachers/' + teacher_id, {
@@ -22,6 +22,7 @@ async function EditTeacherFormHandler(event) {
 
         if (response.ok) {
             console.log('teacher edited')
+            document.location.replace('/teacherhome')
         } else {
             alert(response.statusText);
         }

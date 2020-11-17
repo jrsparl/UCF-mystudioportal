@@ -23,6 +23,7 @@ async function UserFormHandler(event) {
 
         if (response.ok) {
             console.log('teacher entered')
+            document.location.replace('/teacherhome')
         } else {
             alert(response.statusText);
         }
