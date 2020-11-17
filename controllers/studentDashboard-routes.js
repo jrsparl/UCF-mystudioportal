@@ -76,7 +76,7 @@ router.get("/editstudentprofile", withAuth, (req, res) => {
  });
 
 
-router.get("/", (req, res) => {
+router.get("/", withAuth, (req, res) => {
     let id = req.session.user_id
     console.log(id);
     res.render("studenthome", { loggedIn: true });

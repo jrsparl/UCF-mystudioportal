@@ -12,7 +12,7 @@ async function UserFormHandler(event) {
 
 
     if (email && password && role && first_name && last_name && company_id) {
-        const response = await fetch('/api/users/', {
+        const response = await fetch('/api/teachers/user', {
             method: 'post',
             body: JSON.stringify({
             username,
@@ -29,7 +29,7 @@ async function UserFormHandler(event) {
        
         if (response.ok) {
            console.log('user entered')
-           //document.location.replace('/teacherhome') //this is taking you right to the new users page
+           document.location.replace('/teacherhome')
         } else {
             alert(response.statusText);
         }

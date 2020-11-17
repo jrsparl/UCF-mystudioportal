@@ -4,28 +4,32 @@ const withAuth = require("../utils/auth");
 
 // get user details for logged in person
 router.get("/", (req, res) => {
-  User.findOne({
-    where: {
-      id: req.session.user_id,
-    },
-
-    attributes: ["username", "first_name", "last_name"],
-
-    include: [
-      {
-        model: Teacher,
-        attributes: ["id", "birthday", "coaching_genre", "coaching_level"],
+  if (req.session.role === "teacher") {
+    User.findOne({
+      where: {
+        id: req.session.user_id,
       },
-    ],
-  })
-    .then((dbUserData) => {
-      const user = dbUserData.get({ plain: true });
-      res.render("teacherhome", { user, loggedIn: true });
+
+      attributes: ["username", "first_name", "last_name"],
+
+      include: [
+        {
+          model: Teacher,
+          attributes: ["id", "birthday", "coaching_genre", "coaching_level"],
+        },
+      ],
     })
-    .catch((err) => {
-      console.log(err);
-      res.status(500).json(err);
-    });
+      .then((dbUserData) => {
+        const user = dbUserData.get({ plain: true });
+        res.render("teacherhome", { user, loggedIn: true });
+      })
+      .catch((err) => {
+        console.log(err);
+        res.status(500).json(err);
+      });
+  } else {
+    res.redirect("/login");
+  }
 });
 
 // add user
@@ -145,25 +149,7 @@ router.get("/teacherprofile", withAuth, (req, res) => {
     });
 });
 
-// get all students for teacher
-router.get("/:id", (req, res) => {
-  Student.findAll({
-    where: {
-      teacher_id: req.session.user_id,
-    },
-    include: [
-      {
-        model: User,
-        attributes: ["username", "first_name", "last_name"],
-      },
-    ],
-  })
-    .then((dbCommentData) => res.json(dbCommentData))
-    .catch((err) => {
-      console.log(err);
-      res.status(500).json(err);
-    });
-});
+
 
 // router.get("/", (req, res) => {
 //     res.render("teacherhome", { loggedIn: true });

@@ -29,8 +29,8 @@ router.get("/:id", (req, res) => {
       {
         model: Student,
         include: {
-          model: User
-        }
+          model: User,
+        },
       },
     ],
   })
@@ -41,6 +41,26 @@ router.get("/:id", (req, res) => {
       }
       res.json(dbTeacherData);
     })
+    .catch((err) => {
+      console.log(err);
+      res.status(500).json(err);
+    });
+});
+
+// get all students for teacher
+router.get("/students/:id", (req, res) => {
+  Student.findAll({
+    where: {
+      teacher_id: req.session.user_id,
+    },
+    include: [
+      {
+        model: User,
+        attributes: ["username", "first_name", "last_name"],
+      },
+    ],
+  })
+    .then((dbCommentData) => res.json(dbCommentData))
     .catch((err) => {
       console.log(err);
       res.status(500).json(err);
@@ -88,6 +108,25 @@ router.put("/:id", (req, res) => {
         return;
       }
       res.json(dbTeacherData);
+    })
+    .catch((err) => {
+      console.log(err);
+      res.status(500).json(err);
+    });
+});
+
+router.post("/user", (req, res) => {
+  User.create({
+    username: req.body.username,
+    email: req.body.email,
+    role: req.body.role,
+    first_name: req.body.first_name,
+    last_name: req.body.last_name,
+    password: req.body.password,
+    company_id: req.body.company_id,
+  })
+    .then((dbUserData) => {
+      res.json(dbUserData);
     })
     .catch((err) => {
       console.log(err);

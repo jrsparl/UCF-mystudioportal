@@ -16,12 +16,15 @@
 
         <ul class="list-group list-group-flush">
           <li class="list-group-item bg-primary">
+            <h5 id="teacher-id-detail">Teacher ID: {{user.teacher.id}}</h5>
+          </li>
+          <li class="list-group-item bg-primary">
             <h5>Genre: {{user.teacher.coaching_genre}}</h5>
           </li>
         </ul>
         <div class="card-body">
           <a class="card-link white-text btn btn-dark" href="/teacherhome/teacherprofile">View Profile</a>
-          <a class="card-link white-text btn btn-dark" href="/teacherhome/{{user.teacher.id}}">View
+          <a class="card-link white-text btn btn-dark" id="get-students" >View
             Class</a>
         </div>
       </div>
