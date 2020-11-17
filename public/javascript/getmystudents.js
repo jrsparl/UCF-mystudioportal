@@ -1,16 +1,14 @@
-async function FindMyStudentsHandler(event) {
-  event.preventDefault();
+const vStudentBtn = document.getElementById('get-students')
 
-  // const birthday = document.querySelector('#student-birthday-entry').value.trim();
-  // const vocal_part_name = document.querySelector('#vocal_part-entry').value.trim();
-  // const vocal_style = document.querySelector('#vocal_style-entry').value.trim();
-  // const grade_level = document.querySelector('#grade_level-entry').value.trim();
-  // const gender = document.querySelector('#gender-entry').value.trim();
-  // const room_number = document.querySelector('#room_number-entry').value.trim();
+async function FindMyStudentsHandler(event) {
+  
+event.preventDefault();
+  console.log('clicked')
+
   const teacher_id = document.getElementById("teacher-id-detail").textContent;
 
   if (teacher_id) {
-    const response = await fetch("/api/students/" + teacher_id, {
+    const response = await fetch("/api/teachers/students/" + teacher_id, {
       method: "get",
       // body: JSON.stringify({
       //     birthday,
@@ -27,12 +25,7 @@ async function FindMyStudentsHandler(event) {
     if (response.ok) {
       response.json().then(function (data) {
         console.log(data);
-        role = data.user.role;
-        // if (role === "teacher") {
-        //   document.location.replace("/teacherhome");
-        // } else {
-        //   document.location.replace("/studenthome");
-        // }
+      
       });
     } else {
         console.log("no")
@@ -41,6 +34,8 @@ async function FindMyStudentsHandler(event) {
   }
 }
 
-document
-  .getElementById("get-students")
-  .addEventListener("submit", FindMyStudentsHandler);
+vStudentBtn.addEventListener("click", FindMyStudentsHandler);
+
+
+
+// document.querySelector(".get-students").addEventListener("submit", FindMyStudentsHandler);

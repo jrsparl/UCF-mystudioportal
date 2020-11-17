@@ -1,5 +1,5 @@
 <div class="profile-home p-4">
-   {{#if user.teacher.id}}
+  {{#if user.teacher.id}}
   <h1 class="white-text">
     Welcome back!
   </h1>
@@ -24,8 +24,8 @@
         </ul>
         <div class="card-body">
           <a class="card-link white-text btn btn-dark" href="/teacherhome/teacherprofile">View Profile</a>
-          <a class="card-link white-text btn btn-dark" id="get-students" >View
-            Class</a>
+          <button type="button" id= "get-students" class="white-text btn btn-dark">View Class</button>
+          <br>
         </div>
       </div>
     </div>
@@ -42,3 +42,5 @@
   <a class="card-link btn btn-light" href="/teacherhome/createteacherprofile">Create My Profile</a>
 </div>
 {{/if}}
+
+<script src="/javascript/getmystudents.js"></script>

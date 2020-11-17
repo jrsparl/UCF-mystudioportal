@@ -24,7 +24,7 @@ async function EditTeacherFormHandler(event) {
 
         if (response.ok) {
             console.log('teacher edited')
-            document.location.replace('/teacherhome/teacherprofile')
+            document.location.replace('/teacherhome/')
         } else {
             alert(response.statusText);
         }
