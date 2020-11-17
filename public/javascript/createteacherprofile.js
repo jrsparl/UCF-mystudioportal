@@ -24,6 +24,7 @@ async function UserFormHandler(event) {
         if (response.ok) {
             console.log('teacher entered')
             document.location.replace('/teacherhome')
+            // need something here to refresh session or something as once new user is created homepage still the same
         } else {
             alert(response.statusText);
         }

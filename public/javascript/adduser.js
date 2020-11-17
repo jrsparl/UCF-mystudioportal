@@ -29,6 +29,7 @@ async function UserFormHandler(event) {
        
         if (response.ok) {
            console.log('user entered')
+           //document.location.replace('/teacherhome') //this is taking you right to the new users page
         } else {
             alert(response.statusText);
         }
