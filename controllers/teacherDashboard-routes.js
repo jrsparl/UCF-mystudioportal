@@ -105,17 +105,20 @@ router.get("/editteacherprofile", withAuth, (req, res) => {
        id: req.session.user_id,
      },
      
-     attributes: [
-         "company_id", 
-         "id",
-         "first_name",
-         "last_name"
-     ],
+    //  attributes: [
+    //      "company_id", 
+    //      "id",
+    //      "first_name",
+    //      "last_name"
+    //  ],
      include: [
         {
             model: Teacher,
-            attributes: ["id", "birthday", "coaching_genre", "coaching_level"] 
-        }
+           // attributes: ["id", "birthday", "coaching_genre", "coaching_level"] 
+        },
+        {
+          model: Company,
+        },
      ]
        
    })
@@ -129,6 +132,39 @@ router.get("/editteacherprofile", withAuth, (req, res) => {
      });
  });
 
+ router.get("/teacherprofile", withAuth, (req, res) => {
+
+  User.findOne({
+   where: {
+     id: req.session.user_id,
+   },
+   
+  //  attributes: [
+  //      "company_id", 
+  //      "id",
+  //      "first_name",
+  //      "last_name"
+  //  ],
+   include: [
+      {
+          model: Teacher,
+         // attributes: ["id", "birthday", "coaching_genre", "coaching_level"] 
+      },
+      {
+        model: Company,
+      },
+   ]
+     
+ })
+ .then(dbUserData => {
+   const user = dbUserData.get({plain: true});
+   res.render('teacherprofile', { user, loggedIn: true });
+ })
+   .catch((err) => {
+     console.log(err);
+     res.status(500).json(err);
+   });
+});
 
 
 

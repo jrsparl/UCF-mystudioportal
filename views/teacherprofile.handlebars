@@ -1,0 +1,56 @@
+<div class="card profile-home p-4 white-text">
+    <div class="card-header" id="company-info">
+        <label>
+            <h5>Company: </h5>
+        </label>
+        <span >{{user.company.company_name}}</span>
+    </div>
+    <div class="card-body">
+        <form>
+            <div class="form-group hidden">
+                <label>Teacher ID: </label>
+                <span >{{user.teacher.id}}</span>
+            </div>
+
+            <div class="form-group">
+                <label for="first_last_name-display">
+                    <h5>Username: </h5>
+                </label>
+                <span id="first_last_name-display">{{user.username}}</span>
+            </div>
+
+            <div class="form-group">
+                <label for="first_last_name-display">
+                    <h5>Name: </h5>
+                </label>
+                <span id="first_last_name-display">{{user.first_name}} {{user.last_name}}</span>
+            </div>
+            <div class="form-group">
+                <label for="birthday-id">
+                    <h5>Birthday: </h5>
+                </label>
+                <span id="birthday-id">{{format_date user.teacher.birthday}}</span>
+            </div>
+            <div class="form-group">
+                <label for="genre-display">
+                    <h5>Coaching Genre: </h5>
+                </label>
+                <span id="genre-display">{{user.teacher.coaching_genre}}</span>
+            </div>
+            <div class="form-group">
+                <label for="level-display">
+                    <h5>Coaching Level: </h5>
+                </label>
+                <span id="level-display">{{user.teacher.coaching_level}}</span>
+            </div>
+            <div class="form-group">
+                <a class="btn btn-light" href="/teacherhome/editteacherprofile">Edit Profile</a>
+            </div>
+        </form>
+    </div>
+</div>
+<br>
+
+
+
+<script src="/javascript/editteacherprofile.js"></script>
