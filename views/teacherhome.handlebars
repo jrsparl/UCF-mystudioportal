@@ -1,32 +1,55 @@
 <h1>
-    Hi {{user.first_name}} {{user.last_name}} good to see you today!
+  Hi {{user.first_name}} {{user.last_name}} good to see you today!
 </h1>
-<section>
+{{#if user.teacher.id}}
+
+<div class="card" style="width: 18rem;">
+  <h4 class="card-title">Teacher Profile</h4>
+  <img src="" class="card-img-top" alt="Test image">
+  <div class="card-body">
+
+    <h5 class="card-text">{{user.first_name}} {{user.last_name}} </h5>
+  </div>
+  <ul class="list-group list-group-flush">
+    <li class="list-group-item">Birthday: {{format_date user.teacher.birthday}}</li>
+    <li class="list-group-item">coaching genre: {{user.teacher.coaching_genre}}</li>
+    <li class="list-group-item">coaching level: {{user.teacher.coaching_level}}</li>
+  </ul>
+  <div class="card-body">
+
+    <a class="card-link" href="/teacherhome/editteacherprofile">Edit My Profile</a>
+
+
+  </div>
+</div>
+
+{{!-- <section>
   <h2>Your Info</h2>
-  
+
 
 
   <ul>
-    
+
     <li>
-       Birthday: {{format_date user.teacher.birthday}}
+      Birthday: {{format_date user.teacher.birthday}}
     </li>
-    
+
     <li>
       coaching_genre: {{user.teacher.coaching_genre}}
     </li>
-    
+
     <li>
-        coaching_level: {{user.teacher.coaching_level}}
+      coaching_level: {{user.teacher.coaching_level}}
     </li>
 
   </ul>
 
-</section>
+</section> --}}
+{{else}}
+<h3>Please create your profile to get started!</h3>
+<a class="card-link" href="/teacherhome/createteacherprofile">Create My Profile</a>
+{{/if}}
 
-
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <a class="navbar-brand" href="/teacherhome/adduser">Add User</a>
-    <a class="navbar-brand" href="/teacherhome/createteacherprofile">Create My Profile</a>
-    <a class="navbar-brand" href="/teacherhome/editteacherprofile">Edit My Profile</a>
-</nav>
+{{!-- <nav class="navbar fixed-bottom navbar-expand-lg navbar-dark bg-dark">
+  <a class="navbar-brand" href="/teacherhome/adduser">Add User</a>
+</nav> --}}
