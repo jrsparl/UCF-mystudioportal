@@ -5,6 +5,7 @@ async function UserFormHandler(event) {
     const coaching_genre = document.querySelector('#genre-entry').value.trim();
     const coaching_level = document.querySelector('#level-entry').value.trim();
     const user_id = document.getElementById('user_id-entry').textContent;
+    const profile_pic = document.querySelector('#uploadInput').files[0].name;
 
 
 
@@ -16,6 +17,7 @@ async function UserFormHandler(event) {
                 coaching_genre,
                 coaching_level,
                 user_id,
+                profile_pic,
             }),
             headers: { 'Content-Type': 'application/json' }
         });

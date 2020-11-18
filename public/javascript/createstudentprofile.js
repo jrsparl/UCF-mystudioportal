@@ -9,6 +9,7 @@ async function StudentFormHandler(event) {
     const room_number = document.querySelector('#room_number-entry').value.trim();
     const user_id = document.getElementById('student_user_id-entry').textContent;
     const teacher_id = document.querySelector('#teacher_id-entry').value.trim();
+    const profile_pic = document.querySelector('#uploadInput').files[0].name;
 
 
     if (birthday && vocal_part_name && vocal_style && grade_level && room_number) {
@@ -22,7 +23,8 @@ async function StudentFormHandler(event) {
                 gender,
                 room_number,
                 user_id,
-                teacher_id
+                teacher_id,
+                profile_pic,
             }),
             headers: { 'Content-Type': 'application/json' }
         });
