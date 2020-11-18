@@ -10,7 +10,7 @@ router.get("/", (req, res) => {
         id: req.session.user_id,
       },
 
-      attributes: ["username", "first_name", "last_name"],
+      //attributes: ["username", "first_name", "last_name"],
 
       include: [
         {
@@ -148,8 +148,6 @@ router.get("/teacherprofile", withAuth, (req, res) => {
       res.status(500).json(err);
     });
 });
-
-
 
 // router.get("/", (req, res) => {
 //     res.render("teacherhome", { loggedIn: true });

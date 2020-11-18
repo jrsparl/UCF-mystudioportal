@@ -76,11 +76,41 @@ router.get("/editstudentprofile", withAuth, (req, res) => {
  });
 
 
-router.get("/", withAuth, (req, res) => {
-    let id = req.session.user_id
-    console.log(id);
-    res.render("studenthome", { loggedIn: true });
-  });
+// router.get("/", withAuth, (req, res) => {
+//     let id = req.session.user_id
+//     console.log(id);
+//     res.render("studenthome", { loggedIn: true });
+//   });
 
+
+// get user details for logged in person
+router.get("/", (req, res) => {
+  if (req.session.role === "student") {
+    User.findOne({
+      where: {
+        id: req.session.user_id,
+      },
+
+      //attributes: ["username", "first_name", "last_name"],
+
+      include: [
+        {
+          model: Student,
+       
+        },
+      ],
+    })
+      .then((dbUserData) => {
+        const user = dbUserData.get({ plain: true });
+        res.render("studenthome", { user, loggedIn: true });
+      })
+      .catch((err) => {
+        console.log(err);
+        res.status(500).json(err);
+      });
+  } else {
+    res.redirect("/login");
+  }
+});
 
 module.exports = router;
