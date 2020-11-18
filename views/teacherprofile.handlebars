@@ -3,20 +3,27 @@
         <label>
             <h5>Company: </h5>
         </label>
-        <span >{{user.company.company_name}}</span>
+        <span>{{user.company.company_name}}</span>
     </div>
     <div class="card-body">
         <form>
             <div class="form-group hidden">
                 <label>Teacher ID: </label>
-                <span >{{user.teacher.id}}</span>
+                <span>{{user.teacher.id}}</span>
             </div>
 
             <div class="form-group">
-                <label for="first_last_name-display">
+                <label for="username-display">
                     <h5>Username: </h5>
                 </label>
-                <span id="first_last_name-display">{{user.username}}</span>
+                <span id="username-display">{{user.username}}</span>
+            </div>
+
+            <div class="form-group">
+                <label for="email-display">
+                    <h5>Email: </h5>
+                </label>
+                <span id="email-display">{{user.email}}</span>
             </div>
 
             <div class="form-group">
@@ -50,4 +57,3 @@
     </div>
 </div>
 <br>
-
