@@ -5,11 +5,11 @@
     <div class="card-body teacher_entry-form">
         <form>
             <div class="form-group hidden">
-               <label for="user_id-entry">User ID</label>
+                <label for="user_id-entry">User ID</label>
                 <p id="user_id-entry">{{user.id}}</p>
             </div>
             <div class="form-group">
-               <label for="first_last_name-display">Name</label>
+                <label for="first_last_name-display">Name</label>
                 <p id="first_last_name-display">{{user.first_name}} {{user.last_name}}</p>
             </div>
             <div class="form-group">
@@ -24,6 +24,12 @@
                 <label for="level-entry">Coaching Level</label>
                 <input type="text" class="form-control" id="level-entry">
             </div>
+            <form>
+                <div class="form-group">
+                    <label for="profile-pic">Profile picture:</label>
+                    <input type="file" class="form-control-file" id="profile-pic">
+                </div>
+            </form>
             <button type="submit" class="btn btn-light">Submit</button><br>
         </form>
     </div>

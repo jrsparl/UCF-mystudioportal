@@ -1,4 +1,64 @@
-<div class="profile-home">
+<div class="profile-home p-4">
+  {{#if user.student.id}}
+  <h1 class="white-text">
+    Welcome back!
+  </h1>
+  <div class="row">
+    <div class="col-3">
+      <div class="card bg-primary" style="width: 18rem;">
+        <div class="card-body">
+          <h4 class="card-text"> {{user.first_name}} {{user.last_name}} </h4>
+        </div>
+        <img src="../images/JSparling.jpg" class="card-img-top" alt="Test image">
+
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item bg-primary">
+            <h5 id="student-id-detail">Student ID: {{user.student.id}}</h5>
+          </li>
+          <li class="list-group-item bg-primary">
+            <h5>Teacher ID: {{user.student.teacher_id}}</h5>
+          </li>
+        </ul>
+        <div class="card-body">
+          <a class="card-link white-text btn btn-dark" href="/studenthome/studentprofile">View Profile</a>
+          <button type="button" id= "get-students" class="white-text btn btn-dark">View Class</button>
+          <br>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+
+
+
+{{else}}
+<div class="white-text">
+  <h3>Please create your profile to get started!</h3>
+  <a class="card-link btn btn-light" href="/studenthome/createstudentprofile">Create My Profile</a>
+</div>
+{{/if}}
+
+<script src="/javascript/getmystudents.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+{{!-- <div class="profile-home">
     <h1>
         You are logged in as a student
     </h1>
@@ -9,4 +69,4 @@
         <a class="navbar-brand" href="/studenthome/createstudentprofile">Create My Profile</a>
         <a class="navbar-brand" href="/studenthome/editstudentprofile">Edit My Profile</a>
     </nav>
-</div>
+</div> --}}

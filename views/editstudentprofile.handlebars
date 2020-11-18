@@ -1,5 +1,72 @@
-<br>
-<div class="card">
+<form class="profile-home p-4 white-text student_edit-form">
+    <div class="form-group row">
+        <label for="student_id-edit" class="col-sm-2 col-form-label">Student ID: </label>
+        <div class="col-sm-10">
+            <input type="text" readonly class="form-control-plaintext white-text" id="student_id-edit"
+                value="{{user.student.id}}">
+        </div>
+    </div>
+    <div class="form-group row">
+        <label for="first_last_name-display" class="col-sm-2 col-form-label">Name: </label>
+        <div class="col-sm-10">
+            <input type="text" readonly class="form-control-plaintext white-text" id="first_last_name-display"
+                value="{{user.first_name}} {{user.last_name}}">
+        </div>
+    </div>
+    <div class="form-group row">
+        <label for="teacher_id-edit" class="col-sm-2 col-form-label">Teacher ID: </label>
+        <div class="col-sm-10">
+            <input type="text" readonly class="form-control-plaintext white-text" id="teacher_id-edit"
+                value="{{user.student.teacher_id}}">
+        </div>
+    </div>
+    <div class="form-group row">
+        <label for="student-birthday-edit" class="col-sm-2 col-form-label">Birthday:</label>
+        <div class="col-sm-10">
+            <input type="text" class="form-control" id="student-birthday-edit"
+                value="{{format_date user.student.birthday}}">
+        </div>
+    </div>
+    <div class="form-group row">
+        <label for="gender-edit" class="col-sm-2 col-form-label">Gender:</label>
+        <div class="col-sm-10">
+            <input type="text" class="form-control" id="gender-edit"
+                value="{{user.student.gender}}">
+        </div>
+    </div>
+    <div class="form-group row">
+        <label for="inputPassword" class="col-sm-2 col-form-label">Vocal Part:</label>
+        <div class="col-sm-10">
+            <input type="text" class="form-control" id="vocal_part-edit" value="{{user.student.vocal_part_name}}">
+        </div>
+    </div>
+    <div class="form-group row">
+        <label for="vocal_style-edit" class="col-sm-2 col-form-label">Vocal Style:</label>
+        <div class="col-sm-10">
+            <input type="text" class="form-control" id="vocal_style-edit" value="{{user.student.vocal_style}}">
+        </div>
+    </div>
+    <div class="form-group row">
+        <label for="grade_level-edit" class="col-sm-2 col-form-label">Grade Level:</label>
+        <div class="col-sm-10">
+            <input type="text" class="form-control" id="grade_level-edit" value="{{user.student.grade_level}}">
+        </div>
+    </div>
+    <div class="form-group row">
+        <label for="room_number-edit" class="col-sm-2 col-form-label">Room Number:</label>
+        <div class="col-sm-10">
+            <input type="text" class="form-control" id="room_number-edit" value="{{user.student.room_number}}">
+            <br>
+            <button type="submit" class="btn btn-primary">Save Changes</button><br>
+        </div>
+    </div>
+
+</form>
+<script src="/javascript/editstudentprofile.js"></script>
+
+
+
+{{!-- <div class="card profile-home p-4 white-text">
     <div class="card-header" id="company-info">
         {{user.company.company_name}}
     </div>
@@ -10,7 +77,7 @@
                 <p id="student_id-edit">{{user.student.id}}</p>
             </div>
             <div class="form-group">
-                <label for="first_last_name-display">Name</label>
+                <label for="first_last_name-display">Name: </label>
                 <p id="first_last_name-display">{{user.first_name}} {{user.last_name}}</p>
             </div>
             <div class="form-group">
@@ -21,33 +88,28 @@
             <div class="form-group">
                 <label for="vocal_part-edit">Vocal Part</label>
                 <input type="text" class="form-control" id="vocal_part-edit" value="{{user.student.vocal_part_name}}">
-            </div>
-            <div class="form-group">
+            </div> --}}
+{{!-- <div class="form-group">
                 <label for="vocal_style-edit">Vocal Style</label>
                 <input type="text" class="form-control" id="vocal_style-edit" value="{{user.student.vocal_style}}">
-            </div>
-            <div class="form-group">
-                <label for="grade_level-edit">Grade Level</label>
-                <input type="text" class="form-control" id="grade_level-edit" value="{{user.student.grade_level}}">
-            </div>
-            <div class="form-group">
-                <label for="gender-edit">Gender</label>
-                <input type="text" class="form-control" id="gender-edit" value="{{user.student.gender}}">
-            </div>
-            <div class="form-group">
-                <label for="teacher_id-edit">Teacher ID</label>
-                <input type="text" class="form-control" id="teacher_id-edit" value="{{user.student.teacher_id}}">
-            </div>
-            <div class="form-group">
-                <label for="room_number-edit">Room Number</label>
-                <input type="text" class="form-control" id="room_number-edit" value="{{user.student.room_number}}">
-            </div>
-            <button type="submit" class="btn btn-primary">Submit</button><br>
-        </form>
-    </div>
+            </div> --}}
+{{!-- <div class="form-group">
+    <label for="grade_level-edit">Grade Level</label>
+    <input type="text" class="form-control" id="grade_level-edit" value="{{user.student.grade_level}}">
+</div> --}}
+{{!-- <div class="form-group">
+    <label for="teacher_id-edit">Teacher ID</label>
+    <input type="text" class="form-control" id="teacher_id-edit" value="{{user.student.teacher_id}}">
+</div> --}}
+{{!-- <div class="form-group">
+    <label for="room_number-edit">Room Number</label>
+    <input type="text" class="form-control" id="room_number-edit" value="{{user.student.room_number}}">
+</div> --}}
+{{!-- <button type="submit" class="btn btn-primary">Submit</button><br>
+</form>
 </div>
-<br>
+</div>
+<br> --}}
 
 
 
-<script src="/javascript/editstudentprofile.js"></script>

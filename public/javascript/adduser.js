@@ -8,28 +8,25 @@ async function UserFormHandler(event) {
     const first_name = document.querySelector('#first_name-entry').value.trim();
     const last_name = document.querySelector('#last_name-entry').value.trim();
     const company_id = document.getElementById('company_id-entry').textContent;
-        
 
 
     if (email && password && role && first_name && last_name && company_id) {
         const response = await fetch('/api/teachers/user', {
             method: 'post',
             body: JSON.stringify({
-            username,
-            email,
-            role,
-            first_name,
-            last_name,
-            password,
-            company_id,
+                username,
+                email,
+                role,
+                first_name,
+                last_name,
+                password,
+                company_id,
             }),
             headers: { 'Content-Type': 'application/json' }
         });
-
-       
         if (response.ok) {
-           console.log('user entered')
-           document.location.replace('/teacherhome')
+            console.log('user entered')
+            document.location.replace('/teacherhome')
         } else {
             alert(response.statusText);
         }

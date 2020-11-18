@@ -11,7 +11,7 @@ async function StudentFormHandler(event) {
     const teacher_id = document.querySelector('#teacher_id-entry').value.trim();
 
 
-    if (birthday && vocal_part_name && vocal_style && grade_level && room_number ) {
+    if (birthday && vocal_part_name && vocal_style && grade_level && room_number) {
         const response = await fetch('/api/students/', {
             method: 'post',
             body: JSON.stringify({
@@ -30,6 +30,7 @@ async function StudentFormHandler(event) {
 
         if (response.ok) {
             console.log('student entered')
+            document.location.replace('/studenthome')
         } else {
             alert(response.statusText);
         }
