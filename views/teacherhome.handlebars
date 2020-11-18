@@ -9,7 +9,7 @@
         <div class="card-body">
           <h4 class="card-text"> {{user.first_name}} {{user.last_name}} </h4>
         </div>
-        <img src="../images/JSparling.jpg" class="card-img-top" alt="Test image">
+        <img src="../files/{{user.teacher.profile_pic}}" class="card-img-top" alt="profile picture">
         {{!-- <div class="card-body">
           <h5 class="card-text">{{user.first_name}} {{user.last_name}} </h5>
         </div> --}}
@@ -24,7 +24,7 @@
         </ul>
         <div class="card-body">
           <a class="card-link white-text btn btn-dark" href="/teacherhome/teacherprofile">View Profile</a>
-          <button type="button" id= "get-students" class="white-text btn btn-dark">View Class</button>
+          <button type="button" id="get-students" class="white-text btn btn-dark">View Class</button>
           <br>
         </div>
       </div>

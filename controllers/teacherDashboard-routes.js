@@ -15,7 +15,7 @@ router.get("/", (req, res) => {
       include: [
         {
           model: Teacher,
-          attributes: ["id", "birthday", "coaching_genre", "coaching_level"],
+          attributes: ["id", "birthday", "coaching_genre", "coaching_level", "profile_pic"],
         },
       ],
     })

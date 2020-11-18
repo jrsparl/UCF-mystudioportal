@@ -5,11 +5,11 @@
     <div class="card-body teacher_edit-form">
         <form>
             <div class="form-group hidden">
-               <label for="teacher_id-edit">Teacher ID</label>
+                <label for="teacher_id-edit">Teacher ID</label>
                 <p id="teacher_id-edit">{{user.teacher.id}}</p>
             </div>
             <div class="form-group">
-               <label for="first_last_name-display">Name</label>
+                <label for="first_last_name-display">Name</label>
                 <p id="first_last_name-display">{{user.first_name}} {{user.last_name}}</p>
             </div>
             {{!-- <div class="form-group">
@@ -18,7 +18,8 @@
             </div> --}}
             <div class="form-group">
                 <label for="birthday-edit">Birthday</label>
-                <input type="text" class="form-control" id="birthday-edit" value="{{format_date user.teacher.birthday}}">
+                <input type="text" class="form-control" id="birthday-edit"
+                    value="{{format_date user.teacher.birthday}}">
             </div>
             <div class="form-group">
                 <label for="genre-edit">Coaching Genre</label>
@@ -30,10 +31,15 @@
             </div>
             <button type="submit" class="btn btn-light">Save</button><br>
         </form>
+        <input id="uploadInput" type="file" name="FileUp" method="post" enctype="multipart/form-data" />
+        <button style="display: block; margin-top: 50px" id="upBtn">Upload</button>
     </div>
+
+
 </div>
 <br>
 
 
 
 <script src="/javascript/editteacherprofile.js"></script>
+<script src="/javascript/upload.js"></script>

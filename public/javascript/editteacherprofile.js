@@ -5,6 +5,7 @@ async function EditTeacherFormHandler(event) {
     const coaching_genre = document.querySelector('#genre-edit').value.trim();
     const coaching_level = document.querySelector('#level-edit').value.trim();
     const teacher_id = document.getElementById('teacher_id-edit').textContent;
+    const profile_pic = document.querySelector('#uploadInput').files[0].name;
     //const username = document.querySelector('#username-edit').value.trim();
 
 
@@ -17,6 +18,7 @@ async function EditTeacherFormHandler(event) {
                 birthday,
                 coaching_genre,
                 coaching_level,
+                profile_pic,
             }),
             headers: { 'Content-Type': 'application/json' }
         });
