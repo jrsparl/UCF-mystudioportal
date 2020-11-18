@@ -24,7 +24,7 @@ Teacher.init(
       type: DataTypes.DATE,
     },
     profile_pic: {
-      type: DataTypes.BLOB("long"),
+      type: DataTypes.STRING,
       allowNull: true,
     },
     coaching_genre: {

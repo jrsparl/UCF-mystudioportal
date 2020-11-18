@@ -32,3 +32,7 @@ async function EditTeacherFormHandler(event) {
 }
 
 document.querySelector('.teacher_edit-form').addEventListener('submit', EditTeacherFormHandler);
+document.querySelector('#upload-file').addEventListener('submit', function(event){
+    //event.preventDefault()
+    
+});
