@@ -1,8 +1,19 @@
 <div class="card profile-home p-4 white-text">
     <div class="card-header" id="company-info">
-        {{user.company.company_name}}
+        Company: {{user.company.company_name}}
     </div>
     <div class="card-body teacher_edit-form">
+        <label for="picture-edit">Upload Profile Picture</label>
+        <div>
+
+            <input id="uploadInput" type="file" name="FileUp" method="post" enctype="multipart/form-data" />
+            <div>
+                <button type="button" id="upBtn">Upload</button>
+            </div>
+
+        </div>
+        <br>
+
         <form>
             <div class="form-group hidden">
                 <label for="teacher_id-edit">Teacher ID</label>
@@ -31,12 +42,10 @@
             </div>
             <button type="submit" class="btn btn-light">Save</button><br>
         </form>
-        <input id="uploadInput" type="file" name="FileUp" method="post" enctype="multipart/form-data" />
-        <button style="display: block; margin-top: 50px" id="upBtn">Upload</button>
     </div>
 
-
 </div>
+
 <br>
 
 
