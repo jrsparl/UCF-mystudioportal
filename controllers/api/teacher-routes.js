@@ -77,12 +77,12 @@ router.post("/", (req, res) => {
     coaching_level: req.body.coaching_level,
   })
     .then((dbTeacherData) => {
-      (req.session.user_id = dbTeacherData.id),
+      (req.session.user_id = dbTeacherData.user_id),
         // (req.session.company_id = dbTeacherData.company_id),
-        (req.session.birthday = dbTeacherData.birthday),
-        (req.session.profile_pic = dbTeacherData.profile_pic),
-        (req.session.coaching_genre = dbTeacherData.coaching_genre),
-        (req.session.coaching_level = dbTeacherData.coaching_level),
+        // (req.session.birthday = dbTeacherData.birthday),
+        // (req.session.profile_pic = dbTeacherData.profile_pic),
+        // (req.session.coaching_genre = dbTeacherData.coaching_genre),
+        // (req.session.coaching_level = dbTeacherData.coaching_level),
         res.json(dbTeacherData);
     })
     .catch((err) => {
