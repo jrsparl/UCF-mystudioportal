@@ -47,7 +47,7 @@ var displayStudent = function (studentData) {
 
     //build the student card
     let studentCardEl = document.createElement("article");
-    studentCardEl.classList = "card col-3 bg-dark text-light";
+    studentCardEl.classList = "card col-3 bg-dark text-light m-2";
     cardHolder.appendChild(studentCardEl);
 
     //put content holder element in card
