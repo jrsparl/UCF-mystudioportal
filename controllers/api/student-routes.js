@@ -85,16 +85,16 @@ router.post("/", (req, res) => {
     room_number: req.body.room_number,
   })
     .then((dbStudentData) => {
-      (req.session.user_id = dbStudentData.id),
-        (req.session.teacher_id = dbStudentData.teacher_id),
-        (req.session.vocal_part_name = dbStudentData.vocal_part_name),
-        (req.session.birthday = dbStudentData.birthday),
-        (req.session.profile_pic = dbStudentData.profile_pic),
-        (req.session.vocal_style = dbStudentData.vocal_style),
-        (req.session.grade_level = dbStudentData.grade_level),
-        (req.session.gender = dbStudentData.gender),
-        (req.session.guardian_email = dbStudentData.guardian_email),
-        (req.session.room_number = dbStudentData.room_number),
+      (req.session.user_id = dbStudentData.user_id),
+        // (req.session.teacher_id = dbStudentData.teacher_id),
+        // (req.session.vocal_part_name = dbStudentData.vocal_part_name),
+        // (req.session.birthday = dbStudentData.birthday),
+        // (req.session.profile_pic = dbStudentData.profile_pic),
+        // (req.session.vocal_style = dbStudentData.vocal_style),
+        // (req.session.grade_level = dbStudentData.grade_level),
+        // (req.session.gender = dbStudentData.gender),
+        // (req.session.guardian_email = dbStudentData.guardian_email),
+        // (req.session.room_number = dbStudentData.room_number),
         res.json(dbStudentData);
     })
     .catch((err) => {

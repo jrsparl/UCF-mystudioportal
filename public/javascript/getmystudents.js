@@ -40,8 +40,14 @@ var displayStudent = function(studentData){
   for (var i = 0; i < studentData.length; i++){
   let firstName = studentData[i].user.first_name
   let lastName = studentData[i].user.last_name
-  // let imgSource = studentData[i].profile_pic
-  let imgSource = "../images/empty-profilepic.png"
+  
+  if (studentData[i].profile_pic){
+    var imgSource = "../files/" + studentData[i].profile_pic
+  } else{
+    var imgSource = "../images/empty-profilepic.png"
+  }
+  // 
+  
   
   //build the student card
   let studentCardEl = document.createElement("article")
@@ -56,7 +62,7 @@ var displayStudent = function(studentData){
   //add image to card
   let StudentImg = document.createElement("img")
   // add a variable from the database response to get the correct src for the image
-  StudentImg.setAttribute("src", "../images/empty-profilepic.png")
+  StudentImg.setAttribute("src", imgSource)
   StudentImg.setAttribute("alt", "test image")
   StudentImg.classList = "card-img-top"
   studentContentEL.appendChild(StudentImg)
