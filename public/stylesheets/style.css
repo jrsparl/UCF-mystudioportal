@@ -56,3 +56,8 @@
     background-repeat: no-repeat;
     background-size: cover;
 }
+
+.video-frame{
+    position: sticky;
+    top: 0;
+}

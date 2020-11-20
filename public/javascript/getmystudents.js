@@ -37,7 +37,7 @@ var displayStudent = function (studentData) {
   for (var i = 0; i < studentData.length; i++) {
     let firstName = studentData[i].user.first_name;
     let lastName = studentData[i].user.last_name;
-
+    let studentID = studentData[i].id
     if (studentData[i].profile_pic) {
       var imgSource = "../files/" + studentData[i].profile_pic;
     } else {
@@ -52,7 +52,8 @@ var displayStudent = function (studentData) {
 
     //put content holder element in card
     let studentContentEL = document.createElement("div");
-    studentContentEL.classList = "card-body";
+    studentContentEL.classList = "card-body student-card";
+    //studentContentEL.setAttribute("id", studentID)
     studentCardEl.appendChild(studentContentEL);
 
     //add image to card
@@ -68,8 +69,19 @@ var displayStudent = function (studentData) {
     studentNameEl.classList = "card-text";
     studentNameEl.textContent = firstName + " " + lastName;
     studentContentEL.appendChild(studentNameEl);
+
+    // debugger
+    let studentButton = document.createElement("a")
+    studentButton.classList = "white-text btn btn-secondary lesson-button";
+    studentButton.setAttribute("href", "/teacherlessonroom/" + studentID)
+    studentButton.textContent = "Lesson Room"
+    studentContentEL.appendChild(studentButton)
+
+
   }
 };
+
+
 
 vStudentBtn.addEventListener("click", FindMyStudentsHandler);
 

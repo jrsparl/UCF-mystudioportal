@@ -4,6 +4,7 @@ const withAuth = require("../utils/auth");
 
 // get user details for logged in person
 router.get("/", (req, res) => {
+  req.session.student_id = ""
   if (req.session.role === "teacher") {
     User.findOne({
       where: {

@@ -1,0 +1,50 @@
+<div class="profile-home p-4">
+  <h1 class="white-text">
+    Welcome back!
+  </h1>
+  <div class="row">
+    <div class="col-3">
+      <div class="card bg-primary" style="width: 18rem;">
+        <div class="card-body">
+          <h4 class="card-text"> {{student.user.first_name}} {{student.user.last_name}} </h4>
+        </div>
+        <img src="../files/{{student.profile_pic}}" class="card-img-top" alt="Test image">
+
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item bg-primary">
+            <h5 id="student-id-detail">Student ID: {{student.id}}</h5>
+          </li>
+          <li class="list-group-item bg-primary">
+            <h5>Vocal Part: {{student.vocal_part_name}}</h5>
+          </li>
+          <li class="list-group-item bg-primary">
+            <h5>Primary Style: {{student.vocal_style}}</h5>
+          </li>
+          <li class="list-group-item bg-primary">
+            <h5>Grade Level: {{student.grade_level}}</h5>
+          </li>
+        </ul>
+        <div class="card-body">
+          <a class="card-link white-text btn btn-dark" href="/studenthome/studentprofile">View Profile</a>
+          {{!-- <button type="button" id="get-students" class="white-text btn btn-dark">View Class</button> --}}
+          <br>
+        </div>
+      </div>
+    </div>
+    <div>
+        
+      <iframe
+        class="video-frame"
+        src="https://tokbox.com/embed/embed/ot-embed.js?embedId=8325314b-c95e-494e-a489-185f9c40ba59&room=DEFAULT_ROOM&iframe=true"
+        width="500px"
+        height="400px"
+        scrolling="no"
+        allow="microphone; camera"
+
+       > </iframe>
+    </div>
+    
+  </div>
+  
+</div>
+
