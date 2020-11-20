@@ -11,6 +11,30 @@ router.get("/", (req, res) => {
     });
 });
 
+router.get("/viewcomments", (req, res) => {
+  Comment.findAll(
+    {
+      where: {
+        student_id: req.session.student_id,
+      },
+      include: [
+        {
+          model: Teacher,
+          include: {
+            model: User,
+            attributes: ["first_name", "last_name"]
+          },
+        }
+      ]
+    }
+  )
+    .then((dbCommentData) => res.json(dbCommentData))
+    .catch((err) => {
+      console.log(err);
+      res.status(500).json(err);
+    });
+});
+
 
 router.get("/:id", (req, res) => {
   Comment.findOne({
@@ -50,8 +74,8 @@ router.get("/:id", (req, res) => {
 router.post("/", (req, res) => {
   Comment.create({
     comment_text: req.body.comment_text,
-    teacher_id: req.body.teacher_id,
-    student_id: req.body.student_id,
+    teacher_id: req.session.teacher_id,
+    student_id: req.session.student_id,
   })
     .then((dbCommentData) => res.json(dbCommentData))
     .catch((err) => {

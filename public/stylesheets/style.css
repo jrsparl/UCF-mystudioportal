@@ -57,7 +57,7 @@
     background-size: cover;
 }
 
-.video-frame{
+.sticky-frame{
     position: sticky;
     top: 0;
 }

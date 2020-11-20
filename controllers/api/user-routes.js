@@ -98,6 +98,13 @@ router.post("/login", (req, res) => {
         where: {
             email: req.body.email,
         },
+        include: [{
+            model: Student,
+        },
+        {
+            model: Teacher,
+        },
+    ],
     }).then((dbUserData) => {
         if (!dbUserData) {
             res.status(400).json({ message: "No user with that email address!" });
@@ -115,6 +122,12 @@ router.post("/login", (req, res) => {
             req.session.user_id = dbUserData.id;
             req.session.username = dbUserData.username;
             req.session.role = dbUserData.role;
+            if(dbUserData.teacher){
+                req.session.teacher_id = dbUserData.teacher.id;
+            }
+            if(dbUserData.student){
+            req.session.student_id = dbUserData.student.id;
+            }
             req.session.loggedIn = true;
 
             res.json({ user: dbUserData, message: "You are now logged in!" });
