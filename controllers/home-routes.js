@@ -6,6 +6,8 @@ router.get("/", (req, res) => {
     res.redirect("teacherhome");
   } else if (req.session.role === "student") {
     res.redirect("studenthome");
+  } else if (req.session.role === "admin") {
+    res.redirect("adminhome"); 
   } else {
     res.render("homepage");
   }

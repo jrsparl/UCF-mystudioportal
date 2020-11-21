@@ -1,0 +1,14 @@
+<div class="profile-home p-4">
+
+    {{#if user}}
+    <h1 class="white-text">
+       {{user.company.company_name}} Admin Page.
+
+    </h1>
+    <div class="white-text">
+        <h3>
+            Welcome {{user.first_name}} {{user.last_name}} !
+        </h3>
+    </div>
+    {{/if}}
+    <div><a class="card-link btn btn-light" href="/adminhome/adduser">Add User</a></div>

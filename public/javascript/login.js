@@ -20,6 +20,8 @@ async function loginFormHandler(event) {
         role = data.user.role;
         if (role === "teacher") {
           document.location.replace("/teacherhome");
+        } else if (role === "admin") {
+          document.location.replace("/adminhome")
         } else {
           document.location.replace("/studenthome");
         }
