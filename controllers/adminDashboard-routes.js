@@ -57,19 +57,26 @@ router.get("/adduser", withAuth, (req, res) => {
 });
 
 // get all teachers
-router.get("/", (req, res) => {
-  Teacher.findAll({
-    order: [["created_at", "DESC"]],
+router.get("/:id", (req, res) => {
+  Company.findOne({
     where: {
-      company_id: req.session.company_id,
+      id: req.params.id, 
+      
     },
-    include: [
-      {
-        model: User,
+    include: {
+      model: User,
+      include: {
+        model: Teacher, 
       },
-    ],
+    }
   })
-    .then((dbTeacherData) => res.json(dbTeacherData))
+    .then((dbCompanyData) => {
+      if (!dbCompanyData) {
+        res.status(404).json({ message: "No Company found with this id" });
+        return;
+      }
+      res.json(dbCompanyData);
+    })
     .catch((err) => {
       console.log(err);
       res.status(500).json(err);
