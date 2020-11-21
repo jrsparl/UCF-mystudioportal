@@ -56,19 +56,22 @@ router.get("/adduser", withAuth, (req, res) => {
     });
 });
 
-// get all teachers
+// get all Users
 router.get("/:id", (req, res) => {
   Company.findOne({
     where: {
       id: req.params.id, 
       
     },
-    include: {
+    include: [{
       model: User,
-      include: {
+      include: [{
         model: Teacher, 
       },
-    }
+      { 
+        model: Student,
+      }],
+    }]
   })
     .then((dbCompanyData) => {
       if (!dbCompanyData) {
