@@ -56,7 +56,7 @@ router.get("/adduser", withAuth, (req, res) => {
     });
 });
 
-// get all Users
+// get all Users for a Company
 router.get("/:id", (req, res) => {
   Company.findOne({
     where: {
