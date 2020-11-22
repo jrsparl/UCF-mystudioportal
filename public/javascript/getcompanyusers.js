@@ -1,5 +1,5 @@
-const companyTeachers = document.querySelector(".company-teachers")
-async function FindCompanyTeachers() {
+const companyTeachers = document.querySelector(".company-users")
+async function FindCompanyUsers() {
   
   const company_id = document.querySelector(".company-id").textContent;
 
@@ -21,7 +21,7 @@ async function FindCompanyTeachers() {
     if (response.ok) {
       response.json().then(function (data) {
         console.log(data);
-        displayTeacher(data);
+        displayUser(data);
       });
     } else {
       console.log("no");
@@ -30,56 +30,13 @@ async function FindCompanyTeachers() {
   }
 }
 
-var displayTeacher = function (teacherData) {
-  for (var i = 0; i < teacherData.length; i++) {
-    let firstName = teacherData[i].user.first_name;
-    let lastName = teacherData[i].user.last_name;
-    let teacherID = teacherData[i].id
-    if (teacherData[i].profile_pic) {
-      var imgSource = "../files/" + teacherData[i].profile_pic;
-    } else {
-      var imgSource = "../images/empty-profilepic.png";
-    }
-    //
+var displayUser = function (userData) {
+  
 
-    //build the teacher card
-    let teacherCardEl = document.createElement("article");
-    teacherCardEl.classList = "card col-3 bg-dark text-light m-2";
-    cardHolder.appendChild(teacherCardEl);
-
-    //put content holder element in card
-    let teacherContentEL = document.createElement("div");
-    teacherContentEL.classList = "company-teachers";
-    //teacherContentEL.setAttribute("id", teacherID)
-    teacherCardEl.appendChild(teacherContentEL);
-
-    //add image to card
-    // let TeacherImg = document.createElement("img");
-    // // add a variable from the database response to get the correct src for the image
-    // TeacherImg.setAttribute("src", imgSource);
-    // TeacherImg.setAttribute("alt", "test image");
-    // TeacherImg.classList = "card-img-top";
-    // teacherContentEL.appendChild(TeacherImg);
-
-    //add name to card
-    let teacherNameEl = document.createElement("h4");
-    teacherNameEl.classList = "card-text";
-    teacherNameEl.textContent = firstName + " " + lastName;
-    teacherContentEL.appendChild(teacherNameEl);
-
-    
-    let teacherButton = document.createElement("a")
-    teacherButton.classList = "white-text btn btn-secondary lesson-button";
-    teacherButton.setAttribute("href", "/teacherlessonroom/" + teacherID)
-    teacherButton.textContent = "Lesson Room"
-    teacherContentEL.appendChild(teacherButton)
-
-
-  }
 };
 
 
 
-window.addEventListener("load", FindCompanyTeachers);
+window.addEventListener("load", FindCompanyUsers);
 
 // document.querySelector(".get-students").addEventListener("submit", FindMyStudentsHandler);

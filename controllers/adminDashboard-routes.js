@@ -9,7 +9,7 @@ router.get("/", (req, res) => {
       where: {
         id: req.session.user_id,
       },
-    //   attributes: ["company_id"],
+      //   attributes: ["company_id"],
 
       include: [
         {
@@ -60,18 +60,22 @@ router.get("/adduser", withAuth, (req, res) => {
 router.get("/:id", (req, res) => {
   Company.findOne({
     where: {
-      id: req.params.id, 
-      
+      id: req.params.id,
     },
-    include: [{
-      model: User,
-      include: [{
-        model: Teacher, 
+    order: [["created_at", "DESC"]],
+    include: [
+      {
+        model: User,
+        include: [
+          {
+            model: Teacher,
+          },
+          {
+            model: Student,
+          },
+        ],
       },
-      { 
-        model: Student,
-      }],
-    }]
+    ],
   })
     .then((dbCompanyData) => {
       if (!dbCompanyData) {
