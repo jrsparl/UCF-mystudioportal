@@ -86,58 +86,58 @@ router.get("/:id", (req, res) => {
     });
 });
 
-// create teacher profile
-router.get("/createteacherprofile", withAuth, (req, res) => {
-  User.findOne({
-    where: {
-      id: req.session.user_id,
-    },
+// // create teacher profile
+// router.get("/createteacherprofile", withAuth, (req, res) => {
+//   User.findOne({
+//     where: {
+//       id: req.session.user_id,
+//     },
 
-    attributes: ["id", "first_name", "last_name"],
+//     attributes: ["id", "first_name", "last_name"],
 
-    include: [
-      {
-        model: Company,
-        attributes: ["id", "company_name"],
-      },
-    ],
-  })
-    .then((dbUserData) => {
-      const user = dbUserData.get({ plain: true });
-      res.render("createteacherprofile", { user, loggedIn: true });
-    })
-    .catch((err) => {
-      console.log(err);
-      res.status(500).json(err);
-    });
-});
+//     include: [
+//       {
+//         model: Company,
+//         attributes: ["id", "company_name"],
+//       },
+//     ],
+//   })
+//     .then((dbUserData) => {
+//       const user = dbUserData.get({ plain: true });
+//       res.render("createteacherprofile", { user, loggedIn: true });
+//     })
+//     .catch((err) => {
+//       console.log(err);
+//       res.status(500).json(err);
+//     });
+// });
 
-// edit teacher profile
-router.get("/editteacherprofile", withAuth, (req, res) => {
-  User.findOne({
-    where: {
-      id: req.session.user_id,
-    },
+// // edit teacher profile
+// router.get("/editteacherprofile", withAuth, (req, res) => {
+//   User.findOne({
+//     where: {
+//       id: req.session.user_id,
+//     },
 
-    include: [
-      {
-        model: Teacher,
-        // attributes: ["id", "birthday", "coaching_genre", "coaching_level"]
-      },
-      {
-        model: Company,
-      },
-    ],
-  })
-    .then((dbUserData) => {
-      const user = dbUserData.get({ plain: true });
-      res.render("editteacherprofile", { user, loggedIn: true });
-    })
-    .catch((err) => {
-      console.log(err);
-      res.status(500).json(err);
-    });
-});
+//     include: [
+//       {
+//         model: Teacher,
+//         // attributes: ["id", "birthday", "coaching_genre", "coaching_level"]
+//       },
+//       {
+//         model: Company,
+//       },
+//     ],
+//   })
+//     .then((dbUserData) => {
+//       const user = dbUserData.get({ plain: true });
+//       res.render("editteacherprofile", { user, loggedIn: true });
+//     })
+//     .catch((err) => {
+//       console.log(err);
+//       res.status(500).json(err);
+//     });
+// });
 
 // find one teacher
 router.get("/:id", withAuth, (req, res) => {
