@@ -5,12 +5,12 @@
     <div class="row mb-5">
         <div class="col-3">
             <div class="card bg-primary" style="width: 18rem;">
-                <div class="card-body">
+                <div class="card-body white-text">
                     <h4 class="card-text"> {{student.user.first_name}} {{student.user.last_name}} </h4>
                 </div>
                 <img src="../files/{{student.profile_pic}}" class="card-img-top" alt="Test image">
 
-                <ul class="list-group list-group-flush">
+                <ul class="list-group list-group-flush white-text">
                     <li class="list-group-item bg-primary">
                         <p id="student-id-detail">Student ID: {{student.id}}</p>
                     </li>
@@ -27,9 +27,9 @@
             </div>
         </div>
         
-        <div class="col-5">
+        <div class="col-12 col-lg-5 rounded-lg mt-3">
             <iframe
-                class="col-12"
+                class="col-12 rounded-lg"
                 src="https://tokbox.com/embed/embed/ot-embed.js?embedId=8325314b-c95e-494e-a489-185f9c40ba59&room=DEFAULT_ROOM&iframe=true"
                 width="500px" height="400px" scrolling="no" allow="microphone; camera" frameborder="0   "> 
             </iframe>
