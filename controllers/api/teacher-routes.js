@@ -51,12 +51,12 @@ router.get("/:id", (req, res) => {
 router.get("/students/:id", (req, res) => {
   Student.findAll({
     where: {
-      teacher_id: req.session.user_id,
+      teacher_id: req.session.teacher_id,
     },
     include: [
       {
         model: User,
-       attributes: ["username", "first_name", "last_name", "email"],
+      //  attributes: ["username", "first_name", "last_name", "email"],
       },
     ],
   })

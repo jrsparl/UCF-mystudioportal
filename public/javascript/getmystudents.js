@@ -9,15 +9,7 @@ async function FindMyStudentsHandler(event) {
   if (teacher_id) {
     const response = await fetch("/api/teachers/students/" + teacher_id, {
       method: "get",
-      // body: JSON.stringify({
-      //     birthday,
-      //     vocal_part_name,
-      //     vocal_style,
-      //     grade_level,
-      //     gender,
-      //     room_number,
-      //     teacher_id,
-      // }),
+      
       headers: { "Content-Type": "application/json" },
     });
 

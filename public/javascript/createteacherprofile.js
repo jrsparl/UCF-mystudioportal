@@ -11,6 +11,7 @@ async function UserFormHandler(event) {
     if(profile_pic) {
         dataObject = {
             //username,
+            user_id,
             birthday,
             coaching_genre,
             coaching_level,
@@ -19,6 +20,7 @@ async function UserFormHandler(event) {
     } else {
         dataObject = {
             //username,
+            user_id,
             birthday,
             coaching_genre,
             coaching_level,

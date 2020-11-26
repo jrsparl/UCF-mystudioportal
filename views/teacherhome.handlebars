@@ -9,11 +9,9 @@
         <div class="card-body">
           <h4 class="card-text"> {{user.first_name}} {{user.last_name}} </h4>
         </div>
-        {{#if user.teacher.profile_pic}}
+        
         <img src="../files/{{user.teacher.profile_pic}}" class="card-img-top" alt="profile picture">
-        {{else}}
-        <img src="../images/empty-profilepic.png" class="card-img-top" alt="profile picture">
-        {{/if}}
+       
         <ul class="list-group list-group-flush">
           <li class="list-group-item bg-primary">
             <h5 id="teacher-id-detail">Teacher ID: {{user.teacher.id}}</h5>
@@ -62,5 +60,6 @@
 </div>
 </div>
 {{/if}}
+
 
 <script src="/javascript/getmystudents.js"></script>

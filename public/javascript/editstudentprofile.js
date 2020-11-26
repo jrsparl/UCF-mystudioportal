@@ -15,6 +15,32 @@ async function EditStudentFormHandler(event) {
   const teacher_id = document.querySelector("#teacher_id-edit").value.trim();
   const profile_pic = fileName;
 
+  let dataObject;
+  if (profile_pic) {
+    dataObject = {
+      //username,
+      birthday,
+      vocal_part_name,
+      vocal_style,
+      grade_level,
+      gender,
+      room_number,
+      teacher_id,
+      profile_pic,
+    };
+  } else {
+    dataObject = {
+      //username,
+      birthday,
+      vocal_part_name,
+      vocal_style,
+      grade_level,
+      gender,
+      room_number,
+      teacher_id,
+    };
+  }
+
   if (
     birthday &&
     vocal_part_name &&
@@ -25,16 +51,7 @@ async function EditStudentFormHandler(event) {
   ) {
     const response = await fetch("/api/students/" + student_id, {
       method: "put",
-      body: JSON.stringify({
-        birthday,
-        vocal_part_name,
-        vocal_style,
-        grade_level,
-        gender,
-        room_number,
-        teacher_id,
-        profile_pic,
-      }),
+      body: JSON.stringify(dataObject),
       headers: { "Content-Type": "application/json" },
     });
 
