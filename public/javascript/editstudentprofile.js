@@ -13,7 +13,7 @@ async function EditStudentFormHandler(event) {
   const room_number = document.querySelector("#room_number-edit").value.trim();
   const student_id = document.getElementById("student_id-edit").value.trim();
   const teacher_id = document.querySelector("#teacher_id-edit").value.trim();
-  const profile_pic = document.querySelector("#uploadInput").files[0].name;
+  const profile_pic = fileName;
 
   if (
     birthday &&

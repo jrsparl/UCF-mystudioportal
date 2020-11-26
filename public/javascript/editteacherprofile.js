@@ -5,21 +5,32 @@ async function EditTeacherFormHandler(event) {
     const coaching_genre = document.querySelector('#genre-edit').value.trim();
     const coaching_level = document.querySelector('#level-edit').value.trim();
     const teacher_id = document.getElementById('teacher_id-edit').textContent;
-    const profile_pic = document.querySelector('#uploadInput').files[0].name;
+    const profile_pic = fileName;
     //const username = document.querySelector('#username-edit').value.trim();
 
-
+    let dataObject;
+    if(profile_pic) {
+        dataObject = {
+            //username,
+            birthday,
+            coaching_genre,
+            coaching_level,
+            profile_pic,
+        } 
+    } else {
+        dataObject = {
+            //username,
+            birthday,
+            coaching_genre,
+            coaching_level,
+        } 
+        
+    }
 
     if (birthday && coaching_genre && coaching_level && teacher_id) {
         const response = await fetch('/api/teachers/' + teacher_id, {
             method: 'put',
-            body: JSON.stringify({
-                //username,
-                birthday,
-                coaching_genre,
-                coaching_level,
-                profile_pic,
-            }),
+            body: JSON.stringify(dataObject),
             headers: { 'Content-Type': 'application/json' }
         });
 

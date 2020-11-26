@@ -5,20 +5,31 @@ async function UserFormHandler(event) {
     const coaching_genre = document.querySelector('#genre-entry').value.trim();
     const coaching_level = document.querySelector('#level-entry').value.trim();
     const user_id = document.getElementById('user_id-entry').textContent;
-    const profile_pic = document.querySelector('#uploadInput').files[0].name;
+    const profile_pic = fileName;
 
-
+    let dataObject;
+    if(profile_pic) {
+        dataObject = {
+            //username,
+            birthday,
+            coaching_genre,
+            coaching_level,
+            profile_pic,
+        } 
+    } else {
+        dataObject = {
+            //username,
+            birthday,
+            coaching_genre,
+            coaching_level,
+        } 
+        
+    }
 
     if (birthday && coaching_genre && coaching_level && user_id) {
         const response = await fetch('/api/teachers/', {
             method: 'post',
-            body: JSON.stringify({
-                birthday,
-                coaching_genre,
-                coaching_level,
-                user_id,
-                profile_pic,
-            }),
+            body: JSON.stringify(dataObject),
             headers: { 'Content-Type': 'application/json' }
         });
 

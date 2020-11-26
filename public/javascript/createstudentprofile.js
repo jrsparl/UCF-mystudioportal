@@ -9,7 +9,7 @@ async function StudentFormHandler(event) {
     const room_number = document.querySelector('#room_number-entry').value.trim();
     const user_id = document.getElementById('student_user_id-entry').textContent;
     const teacher_id = document.querySelector('#teacher_id-entry').value.trim();
-    const profile_pic = document.querySelector('#uploadInput').files[0].name;
+    const profile_pic = fileName;
 
 
     if (birthday && vocal_part_name && vocal_style && grade_level && room_number) {
