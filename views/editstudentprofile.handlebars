@@ -1,23 +1,44 @@
 <form class="profile-home p-4 white-text student_edit-form">
+
+    <div class="form-group row">
+        <div class="col-sm-2 col-form-label">
+            <label for="picture-edit">Change Profile Picture</label>
+        </div>
+        <div class="col-sm-10">
+            <input id="uploadInput" type="file" name="FileUp" method="post" enctype="multipart/form-data" />
+            <div>
+                <button style="display: block; margin-top: 5px" id="upBtn">Upload</button>
+            </div>
+        </div>
+    </div>
+
     <div class="form-group row">
         <label for="student_id-edit" class="col-sm-2 col-form-label">Student ID: </label>
         <div class="col-sm-10">
-            <input type="text" readonly class="form-control-plaintext white-text" id="student_id-edit"
-                value="{{user.student.id}}">
+            <p type="text" id="student_id-edit">
+                {{user.student.id}}
+            </p>
         </div>
     </div>
     <div class="form-group row">
         <label for="first_last_name-display" class="col-sm-2 col-form-label">Name: </label>
         <div class="col-sm-10">
-            <input type="text" readonly class="form-control-plaintext white-text" id="first_last_name-display"
-                value="{{user.first_name}} {{user.last_name}}">
+            <p id="first_last_name-display">{{user.first_name}} {{user.last_name}}</p>
         </div>
     </div>
     <div class="form-group row">
         <label for="teacher_id-edit" class="col-sm-2 col-form-label">Teacher ID: </label>
         <div class="col-sm-10">
-            <input type="text" readonly class="form-control-plaintext white-text" id="teacher_id-edit"
-                value="{{user.student.teacher_id}}">
+            <p type="text" id="teacher_id-edit">
+                {{user.student.teacher_id}}</p>
+        </div>
+    </div>
+    <div class="form-group row">
+        <label for="room_number-edit" class="col-sm-2 col-form-label">Room Number:</label>
+        <div class="col-sm-10">
+            <p type="text" id="room_number-edit">
+                {{user.student.room_number}}
+            </p>
         </div>
     </div>
     <div class="form-group row">
@@ -49,21 +70,14 @@
         <label for="grade_level-edit" class="col-sm-2 col-form-label">Grade Level:</label>
         <div class="col-sm-10">
             <input type="text" class="form-control" id="grade_level-edit" value="{{user.student.grade_level}}">
-        </div>
-    </div>
-    <div class="form-group row">
-        <label for="room_number-edit" class="col-sm-2 col-form-label">Room Number:</label>
-        <div class="col-sm-10">
-            <input type="text" class="form-control" id="room_number-edit" value="{{user.student.room_number}}">
             <br>
             <button type="submit" class="btn btn-primary">Save Changes</button><br>
         </div>
+
     </div>
 
 
 </form>
-<input id="uploadInput" type="file" name="FileUp" method="post" enctype="multipart/form-data" />
-<button style="display: block; margin-top: 50px" id="upBtn">Upload</button>
 
 
 <script src="/javascript/upload.js"></script>

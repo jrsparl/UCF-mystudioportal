@@ -38,8 +38,9 @@ var displayStudent = function(studentData) {
         //
 
         //build the student card
-        let studentCardEl = document.createElement("article");
-        studentCardEl.classList = "card col-6 col-md-6 col-lg-3 bg-dark text-light m-2";
+        let studentCardEl = document.createElement("div");
+        studentCardEl.classList = "card col-6 col-lg-3 bg-dark text-light m-2";
+        // studentCardEl.setAttribute("style", "width: 10rem;");
         cardHolder.appendChild(studentCardEl);
 
         //put content holder element in card
