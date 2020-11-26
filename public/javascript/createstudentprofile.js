@@ -45,8 +45,7 @@ async function StudentFormHandler(event) {
     birthday &&
     vocal_part_name &&
     vocal_style &&
-    grade_level &&
-    room_number
+    grade_level 
   ) {
     const response = await fetch("/api/students/", {
       method: "post",

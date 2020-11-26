@@ -52,7 +52,7 @@ Student.init({
         type: DataTypes.STRING,
     },
     room_number: {
-        type: DataTypes.INTEGER,
+        type: DataTypes.STRING,
         allowNull: false,
     },
 }, {
