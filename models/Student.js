@@ -37,7 +37,6 @@ Student.init({
     profile_pic: {
         type: DataTypes.STRING,
         allowNull: true,
-        defaultValue: "empty-profilepic.png",
     },
     vocal_style: {
         type: DataTypes.STRING,

@@ -26,7 +26,6 @@ Teacher.init(
     profile_pic: {
       type: DataTypes.STRING,
       allowNull: true,
-      defaultValue: "empty-profilepic.png",
     },
     coaching_genre: {
       type: DataTypes.STRING,
