@@ -10,9 +10,9 @@ async function EditStudentFormHandler(event) {
   const vocal_style = document.querySelector("#vocal_style-edit").value.trim();
   const grade_level = document.querySelector("#grade_level-edit").value.trim();
   const gender = document.querySelector("#gender-edit").value.trim();
-  const room_number = document.querySelector("#room_number-edit").value.trim();
-  const student_id = document.getElementById("student_id-edit").value.trim();
-  const teacher_id = document.querySelector("#teacher_id-edit").value.trim();
+  const room_number = document.querySelector("#room_number-edit").textContent;
+  const student_id = document.getElementById("student_id-edit").textContent;
+  const teacher_id = document.querySelector("#teacher_id-edit").textContent;
   const profile_pic = fileName;
 
   let dataObject;
@@ -24,8 +24,6 @@ async function EditStudentFormHandler(event) {
       vocal_style,
       grade_level,
       gender,
-      room_number,
-      teacher_id,
       profile_pic,
     };
   } else {
@@ -36,8 +34,6 @@ async function EditStudentFormHandler(event) {
       vocal_style,
       grade_level,
       gender,
-      room_number,
-      teacher_id,
     };
   }
 
