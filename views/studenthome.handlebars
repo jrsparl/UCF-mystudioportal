@@ -27,6 +27,49 @@
       </div>
     </div>
 
+    <div class="col-12 col-lg-5 rounded-lg">
+            <iframe
+                class="col-12 rounded-lg"
+                src="https://tokbox.com/embed/embed/ot-embed.js?embedId=8325314b-c95e-494e-a489-185f9c40ba59&room={{user.student.room_number}}&iframe=true"
+                width="500px" height="400px" scrolling="no" allow="microphone; camera" frameborder="0   "> 
+            </iframe>
+            <form class="comment-form col-12">
+                <div>
+                    <textarea class="form-control m-auto" rows="5" name="comment-body"></textarea>
+                </div>
+            
+                <div>
+            
+                    <button type="submit" class="btn btn-primary btn-lg m-1">Add Comment</button>
+                    <button type="button" class="btn btn-secondary btn-lg m-1" id="view-comments">View Comments</button>
+                    <a href="./teacherhome" class="btn btn-secondary btn-lg m-1" id="view-comments">Home page</a>
+            
+            
+                </div>
+            </form>
+            
+        </div>
+        <div class="col-4" id="comment-holder">
+            {{!-- <div class="card">
+                <div class="card-body bg-secondary text-light">
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item bg-secondary">
+                        <p>Created: Created Date</p>
+                        </li>
+                        <li class="list-group-item bg-secondary">
+                        <p>Teacher: Teacher Name</p>
+                        </li>
+                        <li class="list-group-item bg-secondary">
+                        <p>Comment: a pluribus unum umbrella</p>
+                        </li>
+                    </ul>
+                </div>
+            </div> --}}
+        </div>
+
+
+
+
   </div>
 </div>
 

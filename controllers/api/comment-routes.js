@@ -17,15 +17,15 @@ router.get("/viewcomments", (req, res) => {
       where: {
         student_id: req.session.student_id,
       },
-      include: [
-        {
-          model: Teacher,
-          include: {
-            model: User,
-            attributes: ["first_name", "last_name"]
-          },
-        }
-      ]
+        include: [
+          {
+            model: Teacher,
+            include: {
+              model: User,
+              attributes: ["first_name", "last_name"]
+            },
+          }
+        ]
     }
   )
     .then((dbCommentData) => res.json(dbCommentData))

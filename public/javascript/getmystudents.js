@@ -26,6 +26,7 @@ async function FindMyStudentsHandler(event) {
 }
 
 var displayStudent = function(studentData) {
+    cardHolder.textContent = ""
     for (var i = 0; i < studentData.length; i++) {
         let firstName = studentData[i].user.first_name;
         let lastName = studentData[i].user.last_name;
