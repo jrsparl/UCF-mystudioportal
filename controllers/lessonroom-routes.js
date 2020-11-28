@@ -5,23 +5,16 @@ const withAuth = require("../utils/auth");
 
 // get all students for teacher
 router.get("/:id", withAuth, (req, res) => {
+
+  do {
     req.session.student_id = req.params.id
-    Student.findOne({
-      where: {
-        id: req.params.id,
-      },
-    })
-      .then((dbStudentData) => {
-        const student = dbStudentData.get({ plain: true });
-        console.log(student)
-        
-        res.redirect("/teacherlessonroom")
-      }
-          )
-      .catch((err) => {
-        console.log(err);
-        res.status(500).json(err);
-      });
+  }
+  while (req.session.student_id !== req.params.id);
+
+  res.redirect("/teacherlessonroom")
+
+ 
+  
   });
 
 
