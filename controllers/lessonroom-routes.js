@@ -6,21 +6,31 @@ const withAuth = require("../utils/auth");
 // get all students for teacher
 router.get("/:id", withAuth, (req, res) => {
 
+  
   do {
     req.session.student_id = req.params.id
+    if (req.session.student_id === req.params.id){
+
+      res.redirect("/teacherlessonroom")
+    } else {
+      console.log('bad try')
+    }
   }
   while (req.session.student_id !== req.params.id);
 
-  res.redirect("/teacherlessonroom")
+  
+  
 
  
   
   });
 
 
-router.get("/", withAuth, (req, res) => {
-    Student.findOne({
+router.get("/", withAuth, async (req, res) => {
+  console.log(req.session.student_id) 
+  await Student.findOne({
         where: {
+          
           id: req.session.student_id,
         },
     
@@ -38,8 +48,8 @@ router.get("/", withAuth, (req, res) => {
          
         ],
       })
-        .then((dbUserData) => {
-          const student = dbUserData.get({ plain: true });
+        .then(async (dbUserData) => {
+          let student = await dbUserData.get({ plain: true });
           student.current_teacher_id = req.session.user_id
           res.render("teacherlessonroom", { student, loggedIn: true });
         })
