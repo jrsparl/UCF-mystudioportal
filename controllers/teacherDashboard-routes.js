@@ -124,16 +124,9 @@ router.get("/teacherprofile", withAuth, (req, res) => {
       id: req.session.user_id,
     },
 
-    //  attributes: [
-    //      "company_id",
-    //      "id",
-    //      "first_name",
-    //      "last_name"
-    //  ],
     include: [
       {
         model: Teacher,
-        // attributes: ["id", "birthday", "coaching_genre", "coaching_level"]
       },
       {
         model: Company,
@@ -150,8 +143,21 @@ router.get("/teacherprofile", withAuth, (req, res) => {
     });
 });
 
-// router.get("/", (req, res) => {
-//     res.render("teacherhome", { loggedIn: true });
-//   });
+router.get("/userprofile", withAuth, (req, res) => {
+  User.findOne({
+    where: {
+      id: req.session.user_id,
+    },
+
+  })
+    .then((dbUserData) => {
+      const user = dbUserData.get({ plain: true });
+      res.render("userprofile", { user, loggedIn: true });
+    })
+    .catch((err) => {
+      console.log(err);
+      res.status(500).json(err);
+    });
+});
 
 module.exports = router;

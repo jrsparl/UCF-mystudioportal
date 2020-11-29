@@ -131,4 +131,21 @@ router.get("/", (req, res) => {
     }
 });
 
+router.get("/userprofile", withAuth, (req, res) => {
+    User.findOne({
+      where: {
+        id: req.session.user_id,
+      },
+  
+    })
+      .then((dbUserData) => {
+        const user = dbUserData.get({ plain: true });
+        res.render("userprofile", { user, loggedIn: true });
+      })
+      .catch((err) => {
+        console.log(err);
+        res.status(500).json(err);
+      });
+  });
+
 module.exports = router;
