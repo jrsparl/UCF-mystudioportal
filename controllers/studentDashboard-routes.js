@@ -6,24 +6,35 @@ const withAuth = require("../utils/auth");
 router.get("/createstudentprofile", withAuth, (req, res) => {
 
     User.findOne({
-            where: {
-                id: req.session.user_id,
-            },
+        where: {
+            id: req.session.user_id,
+        },
 
-            attributes: [
-                "id",
-                "first_name",
-                "last_name"
-            ],
+        attributes: [
+            "id",
+            "first_name",
+            "last_name"
+        ],
 
+        include: [{
+            model: Company,
+            attributes: ["id", "company_name"],
             include: [{
-                model: Company,
-                attributes: ["id", "company_name"]
+                model: User,
+                where: {
+                    role: "teacher"
+                },
+                include: [{
+                    model: Teacher
+                }]
             }]
+        }]
 
-        })
+    })
         .then(dbUserData => {
             const user = dbUserData.get({ plain: true });
+            req.session.student_id = dbUserData.student.id;
+            console.log(dbUserData.company.users)
             res.render('createstudentprofile', { user, loggedIn: true });
         })
         .catch((err) => {
@@ -35,17 +46,17 @@ router.get("/createstudentprofile", withAuth, (req, res) => {
 // Get Student profile
 router.get("/studentprofile", withAuth, (req, res) => {
     User.findOne({
-            where: {
-                id: req.session.user_id,
-            },
-            include: [{
-                    model: Student,
-                },
-                {
-                    model: Company,
-                },
-            ],
-        })
+        where: {
+            id: req.session.user_id,
+        },
+        include: [{
+            model: Student,
+        },
+        {
+            model: Company,
+        },
+        ],
+    })
         .then((dbUserData) => {
             const user = dbUserData.get({ plain: true });
             res.render("studentprofile", { user, loggedIn: true });
@@ -60,31 +71,31 @@ router.get("/studentprofile", withAuth, (req, res) => {
 router.get("/editstudentprofile", withAuth, (req, res) => {
 
     User.findOne({
-            where: {
-                id: req.session.user_id,
-            },
+        where: {
+            id: req.session.user_id,
+        },
 
+        attributes: [
+            "company_id",
+            "id",
+            "first_name",
+            "last_name"
+        ],
+        include: [{
+            model: Student,
             attributes: [
-                "company_id",
                 "id",
-                "first_name",
-                "last_name"
-            ],
-            include: [{
-                model: Student,
-                attributes: [
-                    "id",
-                    "teacher_id",
-                    "vocal_part_name",
-                    "birthday",
-                    "vocal_style",
-                    "grade_level",
-                    "gender",
-                    "room_number"
-                ]
-            }]
+                "teacher_id",
+                "vocal_part_name",
+                "birthday",
+                "vocal_style",
+                "grade_level",
+                "gender",
+                "room_number"
+            ]
+        }]
 
-        })
+    })
         .then(dbUserData => {
             const user = dbUserData.get({ plain: true });
             res.render('editstudentprofile', { user, loggedIn: true });
@@ -107,17 +118,17 @@ router.get("/editstudentprofile", withAuth, (req, res) => {
 router.get("/", (req, res) => {
     if (req.session.role === "student") {
         User.findOne({
-                where: {
-                    id: req.session.user_id,
-                },
+            where: {
+                id: req.session.user_id,
+            },
 
-                //attributes: ["username", "first_name", "last_name"],
+            //attributes: ["username", "first_name", "last_name"],
 
-                include: [{
-                    model: Student,
+            include: [{
+                model: Student,
 
-                }, ],
-            })
+            },],
+        })
             .then((dbUserData) => {
                 const user = dbUserData.get({ plain: true });
                 res.render("studenthome", { user, loggedIn: true });

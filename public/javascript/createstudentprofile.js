@@ -12,7 +12,7 @@ async function StudentFormHandler(event) {
     const gender = document.querySelector("#gender-entry").value.trim();
     // const room_number = document.querySelector("#room_number-entry").value.trim();
     const user_id = document.getElementById("student_user_id-entry").textContent;
-    const teacher_id = document.querySelector("#teacher_id-entry").value.trim();
+    const teacher_id = document.querySelector("#teacher_id-entry").value;
     const profile_pic = fileName;
 
     let dataObject;
