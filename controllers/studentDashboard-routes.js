@@ -33,7 +33,6 @@ router.get("/createstudentprofile", withAuth, (req, res) => {
     })
         .then(dbUserData => {
             const user = dbUserData.get({ plain: true });
-            req.session.student_id = dbUserData.student.id;
             console.log(dbUserData.company.users)
             res.render('createstudentprofile', { user, loggedIn: true });
         })

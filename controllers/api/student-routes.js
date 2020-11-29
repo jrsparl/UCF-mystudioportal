@@ -87,7 +87,7 @@ router.post("/", (req, res) => {
   })
     .then((dbStudentData) => {
       (req.session.user_id = dbStudentData.user_id),
-        // (req.session.teacher_id = dbStudentData.teacher_id),
+      (req.session.student_id = dbStudentData.id),
         // (req.session.vocal_part_name = dbStudentData.vocal_part_name),
         // (req.session.birthday = dbStudentData.birthday),
         // (req.session.profile_pic = dbStudentData.profile_pic),
