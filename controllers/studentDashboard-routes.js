@@ -138,33 +138,6 @@ router.get("/", (req, res) => {
 });
 
 router.get("/userprofile", withAuth, (req, res) => {
-    User.findOne({
-      where: {
-        id: req.session.user_id,
-      },
-
-      //attributes: ["username", "first_name", "last_name"],
-
-      include: [
-        {
-          model: Student,
-        },
-      ],
-    })
-      .then((dbUserData) => {
-        const user = dbUserData.get({ plain: true });
-        res.render("studenthome", { user, loggedIn: true });
-      })
-      .catch((err) => {
-        console.log(err);
-        res.status(500).json(err);
-      });
-  } else {
-    res.redirect("/login");
-  }
-});
-
-router.get("/userprofile", withAuth, (req, res) => {
   User.findOne({
     where: {
       id: req.session.user_id,
