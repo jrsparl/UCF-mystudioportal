@@ -1,0 +1,39 @@
+<div class="card profile-home p-4 white-text">
+     <div class="form-group card-header" id="Title">
+        <h3>Update User Info</h3>
+        {{user.company.company_name}}
+    </div>
+       
+    <div class="card-body user_edit-form">
+        <form>
+            <div class="form-group hidden">
+                <label for="user_id-edit">User ID: </label>
+                <span id="user_id-edit">{{user.id}}</span>
+            </div>
+            <div class="form-group">
+                <label for="first_name-edit">First name: </label>
+                <input type="text" class="form-control" id="first_name-edit" value="{{user.first_name}}">
+            </div>
+            <div class="form-group">
+                <label for="last_name-edit">Last name:</label>
+                <input type="text" class="form-control" id="last_name-edit" value="{{user.last_name}}">
+            </div>
+
+            <div class="form-group">
+                <label for="email-edit">Email: </label>
+                <input type="text" class="form-control" id="email-edit" value="{{user.email}}">
+            </div>
+            <div class="form-group">
+                <label for="password-edit">Change password: </label>
+                <input type="text" class="form-control" id="password-edit" value="">
+            </div>
+
+            <button type="submit" class="btn btn-light">Save</button><br>
+        </form>
+    </div>
+
+</div>
+
+<br>
+
+<script src="/javascript/edituser.js"></script>

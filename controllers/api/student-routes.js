@@ -1,6 +1,6 @@
 const router = require("express").Router();
 const { nanoid } = require("nanoid");
-const { Student, User, Comment, Teacher } = require("../../models");
+const { Student, User, Comment, Teacher, Company } = require("../../models");
 
 router.get("/", (req, res) => {
   Student.findAll({
@@ -109,6 +109,11 @@ router.put("/:id", (req, res) => {
     where: {
       id: req.params.id,
     },
+    include: [
+      {
+        model: Company,
+      },
+    ],
   })
     .then((dbStudentData) => {
       if (!dbStudentData) {
