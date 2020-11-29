@@ -176,7 +176,6 @@ router.get("/userprofile", withAuth, (req, res) => {
 
 router.get("/edituserprofile", withAuth, (req, res) => {
   User.findOne({
-    attributes: { exclude: ["password"] },
     where: {
       id: req.session.user_id,
     },

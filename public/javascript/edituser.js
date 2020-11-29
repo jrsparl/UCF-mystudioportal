@@ -9,25 +9,26 @@ async function EditUserFormHandler(event) {
    
 
     let dataObject;
-    // dataObject = {
-    //     first_name,
-    //     last_name,
-    //     email,
-    // } 
-    if(password) {
-        dataObject = {
-            first_name,
-            last_name,
-            email,
-            password,
-        } 
-    } else {
-        dataObject = {
-            first_name,
-            last_name,
-            email,
-        }   
-    }
+    dataObject = {
+        first_name,
+        last_name,
+        email,
+        password,
+    } 
+    // if(password) {
+    //     dataObject = {
+    //         first_name,
+    //         last_name,
+    //         email,
+    //         password,
+    //     } 
+    // } else {
+    //     dataObject = {
+    //         first_name,
+    //         last_name,
+    //         email,
+    //     }   
+    // }
 
     if (first_name && user_id) {
         const response = await fetch('/api/users/' + user_id, {
