@@ -34,7 +34,12 @@
             </div>
             
             <div class="form-group">
+                {{#if user.teacher.id}}
                 <a class="btn btn-light" href="/teacherhome/edituserprofile">Edit User</a>
+                {{/if}}
+                {{#if user.student.id}}
+                <a class="btn btn-light" href="/studenthome/edituserprofile">Edit User</a>
+                {{/if}}
             </div>
         </form>
     </div>
