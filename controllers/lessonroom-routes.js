@@ -19,7 +19,7 @@ router.get("/:id", withAuth, teacherAuth, (req, res) => {
       const student = dbStudentData.get({ plain: true });
       console.log(student);
       // res.redirect("/teacherlessonroom");
-      student.current_teacher_id = req.session.user_id;
+      student.current_teacher_id = req.session.teacher_id;
       if (student.teacher_id === student.current_teacher_id){
         res.render("teacherlessonroom", { student, loggedIn: true });
       } else{
