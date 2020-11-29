@@ -2,7 +2,6 @@ const router = require("express").Router();
 const { User, Student } = require("../models");
 const withAuth = require("../utils/auth");
 
-// get all students for teacher
 router.get("/:id", withAuth, (req, res) => {
   req.session.student_id = req.params.id;
   Student.findOne({
@@ -18,8 +17,9 @@ router.get("/:id", withAuth, (req, res) => {
     .then((dbStudentData) => {
       const student = dbStudentData.get({ plain: true });
       console.log(student);
-
-      res.redirect("/teacherlessonroom");
+      // res.redirect("/teacherlessonroom");
+      student.current_teacher_id = req.session.user_id;
+      res.render("teacherlessonroom", { student, loggedIn: true });
     })
     .catch((err) => {
       console.log(err);
@@ -27,32 +27,43 @@ router.get("/:id", withAuth, (req, res) => {
     });
 });
 
-router.get("/", withAuth, (req, res) => {
-  Student.findOne({
-    where: {
-      id: req.session.student_id,
-    },
-    include: [
-      {
-        model: User,
-      },
-    ],
-  })
-    .then((dbUserData) => {
-      
-      if (dbUserData) {
-        const student = dbUserData.get({ plain: true });
-        student.current_teacher_id = req.session.user_id;
-        res.render("teacherlessonroom", { student, loggedIn: true });
-      } else {
-        res.render("teacherlessonroom", { dbUserData, loggedIn: true });
-      }
+// router.get("/", withAuth, (req, res) => {
+//   Student.findOne({
+//     where: {
+//       id: req.session.student_id,
+//     },
+//     include: [
+//       {
+//         model: User,
+//       },
+//     ],
+//   })
+//     .then((dbUserData) => {
+//       if (dbUserData) {
+//         const student = dbUserData.get({ plain: true });
+//         student.current_teacher_id = req.session.user_id;
+//         res.render("teacherlessonroom", { student, loggedIn: true });
+//       } else {
+//         res.render("teacherlessonroom", { dbUserData, loggedIn: true });
+//       }
+//     })
+//     .catch((err) => {
+//       console.log(err);
+//       res.status(500).json(err);
+//     });
+// });
 
-    })
-    .catch((err) => {
-      console.log(err);
-      res.status(500).json(err);
-    });
-});
+// router.param('student', function (req, res, next, id) {
+//   Student.find(id, function (err, student) {
+//     if (err) {
+//       next(err)
+//     } else if (student) {
+//       req.student = student
+//       next()
+//     } else {
+//       next(new Error('failed to load student'))
+//     }
+//   })
+// })
 
 module.exports = router;
