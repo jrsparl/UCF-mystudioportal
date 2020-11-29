@@ -44,9 +44,10 @@
             </div>
             <div class="form-group">
                 <label for="teacher_id-entry">Teacher</label>
-                <select class="custom-select col-sm-10" id="teacher_id-entry" required></select>
-                {{#each user.company.teacher}}
-                <option value={{user.company.teacher.id}}>{{user.company.teacher.user.first_name}} {{user.company.teacher.user.last_name}}</option>
+                <select class="custom-select col-sm-10" id="teacher_id-entry" required>
+                {{#each user.company.users}}
+                <option value={{teacher.id}}>{{teacher.id}} {{first_name}} {{last_name}}</option>
+                 {{/each}}
                  </select>
             </div>
             {{!-- <div class="form-group">
