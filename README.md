@@ -19,7 +19,7 @@
     
 
    ## Usage 
-  Click <a href ="https://pacific-river-56030.herokuapp.com/">here</a> to see! <a href="https://www.github.com/jrsparl">Email</a> to inquire about signing up.
+  Click <a href ="https://pacific-river-56030.herokuapp.com/">here</a> to see! [Email](mailto:john@sparlingmusic.com) to inquire about signing up.
 
    ## Credits  
   Node.js, MySQL, Sequelize, Heroku, Bootstrap 
