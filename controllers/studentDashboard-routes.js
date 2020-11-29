@@ -18,7 +18,15 @@ router.get("/createstudentprofile", withAuth, (req, res) => {
 
             include: [{
                 model: Company,
-                attributes: ["id", "company_name"]
+                attributes: ["id", "company_name"],
+                include: [{
+                    model: Teacher,
+                    attributes: ["id"],
+                    include: [{
+                        model: User,
+                        attributes: ["first_name", "last_name"]
+                    }]
+                }]
             }]
 
         })
