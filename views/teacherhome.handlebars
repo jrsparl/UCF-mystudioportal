@@ -1,10 +1,11 @@
 <div class="profile-home p-4">
   {{#if user.teacher.id}}
+
   <h1 class="white-text">
     Welcome back!
   </h1>
   <div class="row sm">
-    <div class="col-3">
+    <div class="col-md-4">
       <div class="card bg-primary text-light" style="width: 18rem;">
         <div class="card-body">
           <h4 class="card-text"> {{user.first_name}} {{user.last_name}} </h4>
@@ -30,13 +31,14 @@
       </div>
     </div>
 
-    <div class="col-sm-9">
-      <div class="row sm" id="student-card-holder">
+    <div class="col-md-8">
+      <div class="row" id="student-card-holder">
 
       </div>
     </div>
   </div>
 </div>
+
 
 
 
@@ -62,5 +64,6 @@
 </div>
 </div>
 {{/if}}
+
 
 <script src="/javascript/getmystudents.js"></script>

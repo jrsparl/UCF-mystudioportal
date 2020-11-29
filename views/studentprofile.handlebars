@@ -1,4 +1,4 @@
-<form class="profile-home p-4 white-text">
+<div class="profile-home p-4 white-text">
     <div class="form-group row">
         <label for="company-info" class="col-sm-2 col-form-label">Company: </label>
         <div class="col-sm-10">
@@ -23,8 +23,7 @@
     <div class="form-group row">
         <label for="email" class="col-sm-2 col-form-label">Email: </label>
         <div class="col-sm-10">
-            <input type="text" readonly class="form-control-plaintext white-text" id="email"
-                value="{{user.email}}">
+            <input type="text" readonly class="form-control-plaintext white-text" id="email" value="{{user.email}}">
         </div>
     </div>
     <div class="form-group row">
@@ -35,14 +34,21 @@
         </div>
     </div>
     <div class="form-group row">
-        <label for="teacher-id" class="col-sm-2 col-form-label">Teache ID: </label>
+        <label for="teacher-id" class="col-sm-2 col-form-label">Teacher ID: </label>
         <div class="col-sm-10">
             <input type="text" readonly class="form-control-plaintext white-text" id="teacher-id"
                 value="{{user.student.teacher_id}}">
         </div>
     </div>
     <div class="form-group row">
-        <label for="birthday" class="col-sm-2 col-form-label">Birthday:: </label>
+        <label for="room-number" class="col-sm-2 col-form-label">Room Number: </label>
+        <div class="col-sm-10">
+            <input type="text" readonly class="form-control-plaintext white-text" id="room-number"
+                value="{{user.student.room_number}}">
+        </div>
+    </div>
+    <div class="form-group row">
+        <label for="birthday" class="col-sm-2 col-form-label">Birthday: </label>
         <div class="col-sm-10">
             <input type="text" readonly class="form-control-plaintext white-text" id="birthday"
                 value="{{format_date user.student.birthday}}">
@@ -69,15 +75,9 @@
                 value="{{user.student.grade_level}}">
         </div>
     </div>
-    <div class="form-group row">
-        <label for="vocal-style" class="col-sm-2 col-form-label">vocal style: </label>
-        <div class="col-sm-10">
-            <input type="text" readonly class="form-control-plaintext white-text" id="vocal-style"
-                value="{{user.student.vocal_style}}">
-        </div>
-    </div>
+    
     <a class="btn btn-light" href="/studenthome/editstudentprofile">Edit Profile</a>
-</form>
+</div>
 
 
 

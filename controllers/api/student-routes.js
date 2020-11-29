@@ -1,4 +1,5 @@
 const router = require("express").Router();
+const { nanoid } = require("nanoid");
 const { Student, User, Comment, Teacher } = require("../../models");
 
 router.get("/", (req, res) => {
@@ -82,7 +83,7 @@ router.post("/", (req, res) => {
     grade_level: req.body.grade_level,
     gender: req.body.gender,
     guardian_email: req.body.guardian_email,
-    room_number: req.body.room_number,
+    room_number: nanoid(),
   })
     .then((dbStudentData) => {
       (req.session.user_id = dbStudentData.user_id),
