@@ -1,8 +1,9 @@
 const router = require("express").Router();
 const { User, Student } = require("../models");
 const withAuth = require("../utils/auth");
+const teacherAuth = require("../utils/teacherAuth");
 
-router.get("/:id", withAuth, (req, res) => {
+router.get("/:id", withAuth, teacherAuth, (req, res) => {
   req.session.student_id = req.params.id;
   Student.findOne({
     where: {
