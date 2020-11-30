@@ -1,6 +1,6 @@
 const router = require("express").Router();
 const { nanoid } = require("nanoid");
-const { Student, User, Comment, Teacher } = require("../../models");
+const { Student, User, Comment, Teacher, Company } = require("../../models");
 
 router.get("/", (req, res) => {
   Student.findAll({
@@ -87,7 +87,7 @@ router.post("/", (req, res) => {
   })
     .then((dbStudentData) => {
       (req.session.user_id = dbStudentData.user_id),
-        // (req.session.teacher_id = dbStudentData.teacher_id),
+      (req.session.student_id = dbStudentData.id),
         // (req.session.vocal_part_name = dbStudentData.vocal_part_name),
         // (req.session.birthday = dbStudentData.birthday),
         // (req.session.profile_pic = dbStudentData.profile_pic),
@@ -109,6 +109,11 @@ router.put("/:id", (req, res) => {
     where: {
       id: req.params.id,
     },
+    include: [
+      {
+        model: Company,
+      },
+    ],
   })
     .then((dbStudentData) => {
       if (!dbStudentData) {

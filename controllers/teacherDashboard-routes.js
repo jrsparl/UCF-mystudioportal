@@ -4,7 +4,7 @@ const withAuth = require("../utils/auth");
 
 // get user details for logged in person
 router.get("/", (req, res) => {
-  req.session.student_id = ""
+  req.session.student_id = "";
   if (req.session.role === "teacher") {
     User.findOne({
       where: {
@@ -16,7 +16,13 @@ router.get("/", (req, res) => {
       include: [
         {
           model: Teacher,
-          attributes: ["id", "birthday", "coaching_genre", "coaching_level", "profile_pic"],
+          attributes: [
+            "id",
+            "birthday",
+            "coaching_genre",
+            "coaching_level",
+            "profile_pic",
+          ],
         },
       ],
     })
@@ -124,16 +130,9 @@ router.get("/teacherprofile", withAuth, (req, res) => {
       id: req.session.user_id,
     },
 
-    //  attributes: [
-    //      "company_id",
-    //      "id",
-    //      "first_name",
-    //      "last_name"
-    //  ],
     include: [
       {
         model: Teacher,
-        // attributes: ["id", "birthday", "coaching_genre", "coaching_level"]
       },
       {
         model: Company,
@@ -150,8 +149,52 @@ router.get("/teacherprofile", withAuth, (req, res) => {
     });
 });
 
-// router.get("/", (req, res) => {
-//     res.render("teacherhome", { loggedIn: true });
-//   });
+router.get("/userprofile", withAuth, (req, res) => {
+  User.findOne({
+    attributes: { exclude: ["password"] },
+    where: {
+      id: req.session.user_id,
+    },
+    include: [
+      {
+        model: Teacher,
+      },
+      {
+        model: Company,
+      },
+    ],
+  })
+    .then((dbUserData) => {
+      const user = dbUserData.get({ plain: true });
+      res.render("userprofile", { user, loggedIn: true });
+    })
+    .catch((err) => {
+      console.log(err);
+      res.status(500).json(err);
+    });
+});
 
+router.get("/edituserprofile", withAuth, (req, res) => {
+  User.findOne({
+    where: {
+      id: req.session.user_id,
+    },
+    include: [
+      {
+        model: Teacher,
+      },
+      {
+        model: Company,
+      },
+    ],
+  })
+    .then((dbUserData) => {
+      const user = dbUserData.get({ plain: true });
+      res.render("edituserprofile", { user, loggedIn: true });
+    })
+    .catch((err) => {
+      console.log(err);
+      res.status(500).json(err);
+    });
+});
 module.exports = router;

@@ -1,0 +1,49 @@
+<div class="card profile-home p-4 white-text">
+    <div class="card-header" id="company-info">
+        <label>
+            <h5>Company: </h5>
+        </label>
+        <span>{{user.company.company_name}}</span>
+    </div>
+    <div class="card-body">
+        <form>
+           
+            <div class="form-group">
+                <label for="email-display">
+                    <h5>Email: </h5>
+                </label>
+                <span id="email-display">{{user.email}}</span>
+            </div>
+
+             {{!-- <div class="form-group ">
+                <label for="password-display">Password: </label>
+                <span>{{user.password}}</span>
+            </div> --}}
+
+            <div class="form-group">
+                <label for="first_name-display">
+                    <h5>First name: </h5>
+                </label>
+                <span id="first_name-display">{{user.first_name}}</span>
+            </div>
+            <div class="form-group">
+                <label for="last_name-display">
+                    <h5>Last name: </h5>
+                </label>
+                <span id="last_name-display">{{user.last_name}}</span>
+            </div>
+            
+            <div class="form-group">
+                {{#if user.teacher.id}}
+                <a class="btn btn-light" href="/teacherhome/edituserprofile">Edit User</a>
+                {{/if}}
+                {{#if user.student.id}}
+                <a class="btn btn-light" href="/studenthome/edituserprofile">Edit User</a>
+                {{/if}}
+            </div>
+        </form>
+    </div>
+</div>
+<br>
+
+<script src="/javascript/login.js"></script>
