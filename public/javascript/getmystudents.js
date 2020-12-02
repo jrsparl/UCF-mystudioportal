@@ -40,36 +40,49 @@ var displayStudent = function(studentData) {
 
         //build the student card
         let studentCardEl = document.createElement("div");
-        studentCardEl.classList = "card col-6 col-lg-3 bg-dark text-light m-2";
-        // studentCardEl.setAttribute("style", "width: 10rem;");
+        studentCardEl.classList = "card mb-3 bg-dark text-light m-2";
+        studentCardEl.setAttribute("style", "max-width: 300px;");
         cardHolder.appendChild(studentCardEl);
 
         //put content holder element in card
         let studentContentEL = document.createElement("div");
-        studentContentEL.classList = "card-body student-card";
+        studentContentEL.classList = "row no-gutters";
         //studentContentEL.setAttribute("id", studentID)
         studentCardEl.appendChild(studentContentEL);
+
+        let studentContent2EL = document.createElement("div");
+        studentContent2EL.classList = "col-md-4";
+        //studentContentEL.setAttribute("id", studentID)
+        studentContentEL.appendChild(studentContent2EL);
 
         //add image to card
         let StudentImg = document.createElement("img");
         // add a variable from the database response to get the correct src for the image
         StudentImg.setAttribute("src", imgSource);
         StudentImg.setAttribute("alt", "test image");
-        StudentImg.classList = "card-img-top";
-        studentContentEL.appendChild(StudentImg);
+        StudentImg.classList = "card-img";
+        studentContent2EL.appendChild(StudentImg);
 
         //add name to card
+        let studentDetailsEl = document.createElement("div");
+        studentDetailsEl.classList = "col-md-8";
+        studentContentEL.appendChild(studentDetailsEl);
+
+        let studentBodyEl = document.createElement("div");
+        studentBodyEl.classList = "card-body";
+        studentDetailsEl.appendChild(studentBodyEl);
+
         let studentNameEl = document.createElement("h4");
-        studentNameEl.classList = "card-text";
+        studentNameEl.classList = "card-title";
         studentNameEl.textContent = firstName + " " + lastName;
-        studentContentEL.appendChild(studentNameEl);
+        studentBodyEl.appendChild(studentNameEl);
 
         // debugger
         let studentButton = document.createElement("a")
         studentButton.classList = "white-text btn btn-secondary lesson-button";
         studentButton.setAttribute("href", "/teacherlessonroom/" + studentID)
         studentButton.textContent = "Lesson Room"
-        studentContentEL.appendChild(studentButton)
+        studentBodyEl.appendChild(studentButton)
 
 
     }

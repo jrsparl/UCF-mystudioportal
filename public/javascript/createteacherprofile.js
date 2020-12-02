@@ -8,7 +8,7 @@ async function UserFormHandler(event) {
     const profile_pic = fileName;
 
     let dataObject;
-    if(profile_pic) {
+    if (profile_pic) {
         dataObject = {
             //username,
             user_id,
@@ -16,7 +16,7 @@ async function UserFormHandler(event) {
             coaching_genre,
             coaching_level,
             profile_pic,
-        } 
+        }
     } else {
         dataObject = {
             //username,
@@ -24,8 +24,8 @@ async function UserFormHandler(event) {
             birthday,
             coaching_genre,
             coaching_level,
-        } 
-        
+        }
+
     }
 
     if (birthday && coaching_genre && coaching_level && user_id) {
@@ -39,7 +39,7 @@ async function UserFormHandler(event) {
         if (response.ok) {
             console.log('teacher entered')
             document.location.replace('/teacherhome')
-            // need something here to refresh session or something as once new user is created homepage still the same
+                // need something here to refresh session or something as once new user is created homepage still the same
         } else {
             alert(response.statusText);
         }
