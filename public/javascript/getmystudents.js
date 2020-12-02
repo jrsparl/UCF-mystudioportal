@@ -32,7 +32,7 @@ var displayStudent = function(studentData) {
         let lastName = studentData[i].user.last_name;
         let studentID = studentData[i].id
         if (studentData[i].profile_pic) {
-            var imgSource = "../files/" + studentData[i].profile_pic;
+            var imgSource = studentData[i].profile_pic;
         } else {
             var imgSource = "../images/empty-profilepic.png";
         }

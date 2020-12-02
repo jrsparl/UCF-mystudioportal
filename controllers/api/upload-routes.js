@@ -26,7 +26,7 @@ router.post("/", async (req, res) => {
     //Use the name of the input field (i.e. "avatar") to retrieve the uploaded file
 
     //Use the mv() method to place the file in upload directory (i.e. "uploads")
-    //await fileUp.mv(path.join(__dirname, "../../","public/files/", result.url));
+    //await fileUp.mv(path.join(__dirname, "../../","public/files/", randomFileName));
     //await fileUp.mv("./public/files/" + fileUp.name);
 
     //send response
