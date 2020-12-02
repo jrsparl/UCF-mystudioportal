@@ -31,7 +31,7 @@ router.get("/:id", (req, res) => {
         model: Teacher,
         include: {
           model: User,
-          attributes: ["username", "first_name", "last_name"]
+          attributes: ["username", "first_name", "last_name"],
         },
       },
     ],
@@ -52,7 +52,7 @@ router.get("/:id", (req, res) => {
 router.get("/comments/:id", (req, res) => {
   Comment.findAll({
     where: {
-      student_id: req.params.id
+      student_id: req.params.id,
     },
     include: [
       {
@@ -60,7 +60,7 @@ router.get("/comments/:id", (req, res) => {
         attributes: ["id"],
         include: {
           model: User,
-          attributes: ["username", "first_name", "last_name"]
+          attributes: ["username", "first_name", "last_name"],
         },
       },
     ],
@@ -87,7 +87,7 @@ router.post("/", (req, res) => {
   })
     .then((dbStudentData) => {
       (req.session.user_id = dbStudentData.user_id),
-      (req.session.student_id = dbStudentData.id),
+        (req.session.student_id = dbStudentData.id),
         // (req.session.vocal_part_name = dbStudentData.vocal_part_name),
         // (req.session.birthday = dbStudentData.birthday),
         // (req.session.profile_pic = dbStudentData.profile_pic),
