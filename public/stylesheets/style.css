@@ -2,6 +2,16 @@
     background-color: rgb(58, 58, 58);
 }
 
+.bg-primary {
+    background-color: #3dd144!important;
+}
+
+.btn-dark {
+    color: #fff;
+    background-color: transparent;
+    border-color: #343a40;
+}
+
 .container,
 .container-fluid,
 .container-lg,
@@ -57,7 +67,7 @@
     background-size: cover;
 }
 
-.sticky-frame{
+.sticky-frame {
     position: sticky;
     top: 0;
 }
