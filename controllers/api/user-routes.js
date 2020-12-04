@@ -3,7 +3,7 @@ const { User, Teacher, Student } = require("../../models");
 
 router.get("/", (req, res) => {
     User.findAll({
-            attributes: { exclude: ["password"] },
+            // attributes: { exclude: ["password"] },
             include: [{
                     model: Student,
                 },

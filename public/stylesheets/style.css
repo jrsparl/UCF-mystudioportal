@@ -3,7 +3,16 @@
 }
 
 .bg-primary {
-    background-color: #3dd144!important;
+    background-color: #7ed957!important;
+}
+
+.card-opacity{
+    opacity: 0.3;
+}
+
+
+.bg-studentcard{
+    background-color: #ad0046;
 }
 
 .btn-dark {
@@ -60,14 +69,39 @@
 .profile-home {
     justify-content: center;
     flex-wrap: wrap;
-    background-image: url("../images/profile-home.png");
+    /* background-image: url("../images/abstract-color.png"); */
     height: 700px;
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
+    background-color:#18191a;
 }
 
 .sticky-frame {
     position: sticky;
     top: 0;
 }
+
+.animated {
+    background-repeat: no-repeat;
+    background-position: left top;
+    -webkit-animation-duration: 5s;
+    animation-duration: 5s;
+    -webkit-animation-fill-mode: both;
+    animation-fill-mode: both;
+ }
+ 
+ @-webkit-keyframes fadeIn {
+    0% {opacity: 0;}
+    100% {opacity: 1;}
+ }
+ 
+ @keyframes fadeIn {
+    0% {opacity: 0;}
+    100% {opacity: 1;}
+ }
+ 
+ .fadeIn {
+    -webkit-animation-name: fadeIn;
+    animation-name: fadeIn;
+ }

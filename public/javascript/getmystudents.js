@@ -22,6 +22,7 @@ async function FindMyStudentsHandler(event) {
 }
 var displayStudent = function(studentData) {
     cardHolder.textContent = ""
+
     for (var i = 0; i < studentData.length; i++) {
         let firstName = studentData[i].user.first_name;
         let lastName = studentData[i].user.last_name;
@@ -34,12 +35,12 @@ var displayStudent = function(studentData) {
         //
         //build the student card
         let studentCardEl = document.createElement("div");
-        studentCardEl.classList = "card col-6 col-lg-3 bg-dark text-light m-2";
+        studentCardEl.classList = "card col-6 col-lg-3 bg-dark text-light m-2 animated fadeIn";
         // studentCardEl.setAttribute("style", "width: 10rem;");
         cardHolder.appendChild(studentCardEl);
         //put content holder element in card
         let studentContentEL = document.createElement("div");
-        studentContentEL.classList = "card-body student-card";
+        studentContentEL.classList = "card-body student-card text-center";
         //studentContentEL.setAttribute("id", studentID)
         studentCardEl.appendChild(studentContentEL);
         //add image to card

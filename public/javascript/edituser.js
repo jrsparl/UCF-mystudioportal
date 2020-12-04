@@ -4,7 +4,7 @@ async function EditUserFormHandler(event) {
     const first_name = document.querySelector('#first_name-edit').value.trim();
     const last_name = document.querySelector('#last_name-edit').value.trim();
     const email = document.querySelector('#email-edit').value.trim();
-    const password = document.querySelector('#password-edit').value.trim();
+    // const password = document.querySelector('#password-edit').value.trim();
     const user_id = document.getElementById('user_id-edit').textContent;
    
 
@@ -13,7 +13,7 @@ async function EditUserFormHandler(event) {
         first_name,
         last_name,
         email,
-        password,
+        // password,
     } 
     // if(password) {
     //     dataObject = {
