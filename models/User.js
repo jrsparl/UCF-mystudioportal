@@ -8,6 +8,9 @@ class User extends Model {
   checkPassword(loginPw) {
     return bcrypt.compareSync(loginPw, this.password);
   }
+  hashPassword() {
+    this.password = bcrypt.hashSync(this.password, 10);
+  }
 }
 
 // create fields/columns for User model
@@ -63,15 +66,12 @@ User.init(
   {
     hooks: {
       // set up beforeCreate lifecycle "hook" functionality
-      async beforeCreate(newUserData) {
-        newUserData.password = await bcrypt.hash(newUserData.password, 10);
+      beforeCreate(newUserData) {
+        newUserData.password = bcrypt.hashSync(newUserData.password, 10);
         return newUserData;
       },
 
-      async beforeUpdate(updatedUserData) {
-        updatedUserData.password = await bcrypt.hash(updatedUserData.password, 10);
-        return updatedUserData;
-      }
+      
     },
     sequelize,
     timestamps: false,

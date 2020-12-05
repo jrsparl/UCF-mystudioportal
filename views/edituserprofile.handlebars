@@ -1,9 +1,9 @@
 <div class="card profile-home p-4 white-text">
-     <div class="form-group card-header" id="Title">
+    <div class="form-group card-header" id="Title">
         <h3>Update User Info</h3>
         {{user.company.company_name}}
     </div>
-       
+
     <div class="card-body user_edit-form">
         <form>
             <div class="form-group hidden">
@@ -21,12 +21,18 @@
 
             <div class="form-group">
                 <label for="email-edit">Email: </label>
-                <input type="text" class="form-control" id="email-edit" value="{{user.email}}">
+                <input type="email" class="form-control" id="email-edit" value="{{user.email}}">
             </div>
-            {{!-- <div class="form-group invisible">
-                <label for="password-edit">Change password: </label>
-                <input type="text" class="form-control" id="password-edit" value="root">
+            {{!-- <div class="form-group form-check">
+                <input type="checkbox" class="form-check-input" id="passCheck">
+                <label class="form-check-label" for="passCheck">Do you want to change your password?</label>
             </div> --}}
+            <div class="form-group" id="showPass">
+                <label for="password-edit">Change password: </label>
+                <input type="password" class="form-control" id="password-edit">
+                <small id="passHelp" class="form-text text-muted">If you don't want to change your password leave this
+                    field blank.</small>
+            </div>
 
             <button type="submit" class="btn btn-light">Save</button><br>
         </form>
