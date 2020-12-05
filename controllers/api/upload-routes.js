@@ -34,7 +34,7 @@ router.post("/", async (req, res) => {
       status: true,
       message: "File was uploaded",
       data: {
-        name: result.url,
+        name: result.secure_url,
         mimetype: fileUp.mimetype,
         size: fileUp.size,
       },
