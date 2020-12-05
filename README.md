@@ -5,7 +5,8 @@
       
    MyStudioPortal was created by musicians with the intention of expanding the capabilities of local performing arts schools to help aid in their operations to foster a healthy and competitive industry.
 
-   <img src="">
+   <img src="/public/images/student page.png">
+   <img src="/public/images/teacher page.png">
 
    ## Table of Contents
   * [Installation](#installation)
