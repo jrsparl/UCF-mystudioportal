@@ -2,7 +2,21 @@
   <div class="col-4"></div>
   <div class="col-lg-8">
     <div class="login-form card-body col-5">
-      <form class="white-text">
+      <form class="white-text" action="/login" method="post">
+        <h3 class="pb-3">Sign-in</h3>
+        <div class="form-group">
+          <label for="email-login">Email:</label>
+          <input type="email" name="email" class="form-control" id="email-login" />
+        </div>
+        <div class="form-group">
+          <label for="password-login">Password:</label>
+          <input class="form-control" id="password-login" type="password" name="password" />
+        </div>
+        <div>
+          <input type="submit" class="btn btn-primary" value="Log In" />
+        </div>
+      </form>
+      {{!-- <form class="white-text">
         <h3 class="pb-3">Sign-in</h3>
         <div class="form-group">
           <label for="email-login">Email address</label>
@@ -13,7 +27,7 @@
           <input type="password" class="form-control" id="password-login">
         </div>
         <button type="submit" class="btn btn-primary">Login</button><br>
-      </form>
+      </form> --}}
     </div>
   </div>
 </div>
