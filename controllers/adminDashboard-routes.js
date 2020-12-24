@@ -58,6 +58,14 @@ router.get("/adduser", withAuth, (req, res) => {
 
 // get all Users for a Company
 router.get("/:id", (req, res) => {
+  if (req.session.role !== "admin") {
+    res.json({ message: "Only Administrators can see all users" });
+    return;
+  }
+  if (!(req.session.company_id === req.params.company_id)) {
+    res.json({ message: "You can only see Users for your company!" });
+    return;
+  }
   Company.findOne({
     where: {
       id: req.params.id,

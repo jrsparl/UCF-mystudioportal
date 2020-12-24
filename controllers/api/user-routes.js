@@ -3,22 +3,15 @@ const { User, Teacher, Student } = require("../../models");
 const withAuth = require("../../utils/auth");
 
 router.get("/", (req, res) => {
-  // if(!req.session.loggedIn) {
-  //   res.json({ message: "invalid request"})
-  //   return;
-  // }
-  // if (!req.session.user_id) {
-  //   res.json({ message: "invalid user" });
-  //   return;
-  // }
-  // if (req.session.role !== "admin") {
-  //   res.json({ message: "Only Administrators can see all users" });
-  //   return;
-  // }
-  if (!req.session.company_id) {
-    res.json({ message: "You can only see Users for your company!" });
+  if(!req.session.loggedIn) {
+    res.json({ message: "invalid request"})
     return;
   }
+  if (!req.session.user_id) {
+    res.json({ message: "invalid user" });
+    return;
+  }
+  
   User.findAll({
     // attributes: { exclude: ["password"] },
     include: [
@@ -68,6 +61,10 @@ router.get("/:id", (req, res) => {
 });
 
 router.post("/", (req, res) => {
+  // if(!(req.session)) {
+  //   res.json({ message: "fail"})
+  //   return;
+  // }
   User.create({
     username: req.body.username,
     email: req.body.email,
