@@ -4,6 +4,7 @@ const User = require("./User");
 const Teacher = require("./Teacher");
 const Student = require("./Student");
 const Comment = require("./Comment");
+const Repertoire = require("./Repertoire");
 
 // create associations
 Company.hasMany(User, {
@@ -28,13 +29,12 @@ Student.belongsTo(User, {
 });
 
 Teacher.hasMany(Student, {
-  foreignKey: "teacher_id"
+  foreignKey: "teacher_id",
 });
 
 Student.belongsTo(Teacher, {
-  foreignKey: "teacher_id"
+  foreignKey: "teacher_id",
 });
-
 
 Student.hasMany(Comment, {
   foreignKey: "student_id",
@@ -50,5 +50,11 @@ Comment.belongsTo(Teacher, {
   foreignKey: "teacher_id",
 });
 
+Company.hasMany(Repertoire, {
+  foreignKey: "company_id",
+});
+Repertoire.belongsTo(Company, {
+  foreignKey: "company_id",
+});
 
-module.exports = { User, Teacher, Student, Company, Comment };
+module.exports = { User, Teacher, Student, Company, Comment, Repertoire };
