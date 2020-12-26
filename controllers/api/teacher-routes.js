@@ -2,6 +2,14 @@ const router = require("express").Router();
 const { Teacher, User, Student } = require("../../models");
 
 router.get("/", (req, res) => {
+  if (!req.session.loggedIn) {
+    res.json({ message: "You must be logged in" });
+    return;
+  }
+  if (!req.session.user_id) {
+    res.json({ message: "invalid user" });
+    return;
+  }
   Teacher.findAll({
     order: [["created_at", "DESC"]],
     include: [
@@ -18,6 +26,14 @@ router.get("/", (req, res) => {
 });
 
 router.get("/:id", (req, res) => {
+  if (!req.session.loggedIn) {
+    res.json({ message: "You must be logged in" });
+    return;
+  }
+  if (!req.session.user_id) {
+    res.json({ message: "invalid user" });
+    return;
+  }
   Teacher.findOne({
     where: {
       id: req.params.id,
@@ -49,6 +65,14 @@ router.get("/:id", (req, res) => {
 
 // get all students for teacher
 router.get("/students/:id", (req, res) => {
+  if (!req.session.loggedIn) {
+    res.json({ message: "You must be logged in" });
+    return;
+  }
+  if (!req.session.user_id) {
+    res.json({ message: "invalid user" });
+    return;
+  }
   Student.findAll({
     where: {
       teacher_id: req.session.teacher_id,
@@ -56,7 +80,7 @@ router.get("/students/:id", (req, res) => {
     include: [
       {
         model: User,
-      //  attributes: ["username", "first_name", "last_name", "email"],
+        //  attributes: ["username", "first_name", "last_name", "email"],
       },
     ],
   })
@@ -68,6 +92,18 @@ router.get("/students/:id", (req, res) => {
 });
 
 router.post("/", (req, res) => {
+  if (!req.session.loggedIn) {
+    res.json({ message: "You must be logged in" });
+    return;
+  }
+  if (!req.session.user_id) {
+    res.json({ message: "invalid user" });
+    return;
+  }
+  if (req.session.role != "teacher") {
+    res.json({ message: "invalid user" });
+    return;
+  }
   Teacher.create({
     user_id: req.body.user_id,
     // company_id: req.body.company_id,
@@ -78,7 +114,7 @@ router.post("/", (req, res) => {
   })
     .then((dbTeacherData) => {
       (req.session.user_id = dbTeacherData.user_id),
-      (req.session.teacher_id = dbTeacherData.id),
+        (req.session.teacher_id = dbTeacherData.id),
         // (req.session.company_id = dbTeacherData.company_id),
         // (req.session.birthday = dbTeacherData.birthday),
         // (req.session.profile_pic = dbTeacherData.profile_pic),
@@ -93,6 +129,18 @@ router.post("/", (req, res) => {
 });
 
 router.put("/:id", (req, res) => {
+  if (!req.session.loggedIn) {
+    res.json({ message: "You must be logged in" });
+    return;
+  }
+  if (!req.session.user_id) {
+    res.json({ message: "invalid user" });
+    return;
+  }
+  if (req.session.teacher_id != req.params.id) {
+    res.json({ message: "You can only update yourself" });
+    return;
+  }
   Teacher.update(req.body, {
     where: {
       id: req.params.id,
@@ -117,6 +165,18 @@ router.put("/:id", (req, res) => {
 });
 
 router.post("/user", (req, res) => {
+  if (!req.session.loggedIn) {
+    res.json({ message: "You must be logged in" });
+    return;
+  }
+  if (!req.session.user_id) {
+    res.json({ message: "invalid user" });
+    return;
+  }
+  if (!req.session.teacher_id || req.session.role != "admin") {
+    res.json({ message: "You don't have permissions to create a user" });
+    return;
+  }
   User.create({
     username: req.body.username,
     email: req.body.email,
@@ -136,6 +196,18 @@ router.post("/user", (req, res) => {
 });
 
 router.delete("/:id", (req, res) => {
+  if (!req.session.loggedIn) {
+    res.json({ message: "You must be logged in" });
+    return;
+  }
+  if (!req.session.user_id) {
+    res.json({ message: "invalid user" });
+    return;
+  }
+  if (req.session.teacher_id != req.params.id) {
+    res.json({ message: "You can only delete yourself" });
+    return;
+  }
   Teacher.destroy({
     where: {
       id: req.params.id,

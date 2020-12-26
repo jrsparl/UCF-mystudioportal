@@ -97,6 +97,10 @@ router.post("/", (req, res) => {
     res.json({ message: "invalid user" });
     return;
   }
+  if (req.session.role != "student") {
+    res.json({ message: "invalid user" });
+    return;
+  }
   Student.create({
     user_id: req.body.user_id,
     teacher_id: req.body.teacher_id,
@@ -173,7 +177,7 @@ router.delete("/:id", (req, res) => {
     res.json({ message: "invalid user" });
     return;
   }
-  if (!req.session.student_id != req.params.id) {
+  if (req.session.student_id != req.params.id) {
     res.json({ message: "You can only delete yourself" });
     return;
   }

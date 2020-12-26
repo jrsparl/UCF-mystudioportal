@@ -3,8 +3,15 @@ const { nanoid } = require("nanoid");
 const path = require("path");
 const cloudinary = require("../../utils/cloudinary");
 
-
 router.post("/", async (req, res) => {
+  if (!req.session.loggedIn) {
+    res.json({ message: "You must be logged in" });
+    return;
+  }
+  if (!req.session.user_id) {
+    res.json({ message: "invalid user" });
+    return;
+  }
   try {
     if (!req.files) {
       return res.json({
@@ -13,10 +20,10 @@ router.post("/", async (req, res) => {
       });
     }
     const fileUp = req.files.fileUp;
-    console.log(fileUp)
+    console.log(fileUp);
 
     const result = await cloudinary.uploader.upload(fileUp.tempFilePath);
-    console.log(result)
+    console.log(result);
 
     // generating random id for the file name
     // const id = nanoid();
