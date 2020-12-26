@@ -2,9 +2,11 @@ const router = require("express").Router();
 const { Company, User } = require("../../models");
 
 router.get("/", (req, res) => {
-  Company.findAll({
-    attributes: { exclude: ["password"] },
-  })
+  if (!req.session.user_id) {
+    res.json({ message: "invalid user" });
+    return;
+  }
+  Company.findAll({})
     .then((dbCompanyData) => res.json(dbCompanyData))
     .catch((err) => {
       console.log(err);
@@ -13,8 +15,11 @@ router.get("/", (req, res) => {
 });
 
 router.get("/:id", (req, res) => {
+  if (!req.session.user_id) {
+    res.json({ message: "invalid user" });
+    return;
+  }
   Company.findOne({
-    attributes: { exclude: ["password"] },
     where: {
       id: req.params.id,
     },
@@ -33,6 +38,10 @@ router.get("/:id", (req, res) => {
 });
 
 router.post("/", (req, res) => {
+  if (!req.session.user_id) {
+    res.json({ message: "invalid user" });
+    return;
+  }
   Company.create({
     company_name: req.body.company_name,
     street_address: req.body.street_address,
@@ -63,6 +72,10 @@ router.post("/", (req, res) => {
 });
 
 router.delete("/:id", (req, res) => {
+  if (!req.session.user_id) {
+    res.json({ message: "invalid user" });
+    return;
+  }
   Company.destroy({
     where: {
       id: req.params.id,
