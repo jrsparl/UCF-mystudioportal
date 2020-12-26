@@ -3,6 +3,14 @@ const { nanoid } = require("nanoid");
 const { Student, User, Comment, Teacher, Company } = require("../../models");
 
 router.get("/", (req, res) => {
+  if (!req.session.loggedIn) {
+    res.json({ message: "You must be logged in" });
+    return;
+  }
+  if (!req.session.user_id) {
+    res.json({ message: "invalid user" });
+    return;
+  }
   Student.findAll({
     order: [["created_at", "DESC"]],
     include: [
@@ -19,6 +27,14 @@ router.get("/", (req, res) => {
 });
 
 router.get("/:id", (req, res) => {
+  if (!req.session.loggedIn) {
+    res.json({ message: "You must be logged in" });
+    return;
+  }
+  if (!req.session.user_id) {
+    res.json({ message: "invalid user" });
+    return;
+  }
   Student.findOne({
     where: {
       id: req.params.id,
@@ -73,6 +89,14 @@ router.get("/comments/:id", (req, res) => {
 });
 
 router.post("/", (req, res) => {
+  if (!req.session.loggedIn) {
+    res.json({ message: "You must be logged in" });
+    return;
+  }
+  if (!req.session.user_id) {
+    res.json({ message: "invalid user" });
+    return;
+  }
   Student.create({
     user_id: req.body.user_id,
     teacher_id: req.body.teacher_id,
@@ -105,6 +129,18 @@ router.post("/", (req, res) => {
 });
 
 router.put("/:id", (req, res) => {
+  if (!req.session.loggedIn) {
+    res.json({ message: "You must be logged in" });
+    return;
+  }
+  if (!req.session.user_id) {
+    res.json({ message: "invalid user" });
+    return;
+  }
+  if (req.session.student_id != req.params.id) {
+    res.json({ message: "You can only update yourself" });
+    return;
+  }
   Student.update(req.body, {
     where: {
       id: req.params.id,
@@ -129,6 +165,18 @@ router.put("/:id", (req, res) => {
 });
 
 router.delete("/:id", (req, res) => {
+  if (!req.session.loggedIn) {
+    res.json({ message: "You must be logged in" });
+    return;
+  }
+  if (!req.session.user_id) {
+    res.json({ message: "invalid user" });
+    return;
+  }
+  if (!req.session.student_id != req.params.id) {
+    res.json({ message: "You can only delete yourself" });
+    return;
+  }
   Student.destroy({
     where: {
       id: req.params.id,
