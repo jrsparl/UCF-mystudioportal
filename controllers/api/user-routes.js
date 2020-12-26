@@ -3,15 +3,21 @@ const { User, Teacher, Student } = require("../../models");
 const withAuth = require("../../utils/auth");
 
 router.get("/", (req, res) => {
-  if(!req.session.loggedIn) {
-    res.json({ message: "invalid request"})
+  if (!req.session.loggedIn) {
+    res.json({ message: "You must be logged in" });
     return;
   }
   if (!req.session.user_id) {
     res.json({ message: "invalid user" });
     return;
   }
-  
+  if (!req.session.teacher_id || req.session.role != "admin") {
+    res.json({
+      message: "Only Teachers and administrators can access this feature",
+    });
+    return;
+  }
+
   User.findAll({
     // attributes: { exclude: ["password"] },
     include: [
@@ -33,6 +39,14 @@ router.get("/", (req, res) => {
 });
 
 router.get("/:id", (req, res) => {
+  if (!req.session.loggedIn) {
+    res.json({ message: "You must be logged in" });
+    return;
+  }
+  if (!req.session.user_id) {
+    res.json({ message: "invalid user" });
+    return;
+  }
   User.findOne({
     attributes: { exclude: ["password"] },
     where: {
@@ -61,10 +75,14 @@ router.get("/:id", (req, res) => {
 });
 
 router.post("/", (req, res) => {
-  // if(!(req.session)) {
-  //   res.json({ message: "fail"})
-  //   return;
-  // }
+  if (!req.session.user_id) {
+    res.json({ message: "invalid user" });
+    return;
+  }
+  if (!req.session.teacher_id || req.session.role != "admin") {
+    res.json({ message: "You don't have permissions to create a user" });
+    return;
+  }
   User.create({
     username: req.body.username,
     email: req.body.email,
@@ -92,12 +110,25 @@ router.post("/", (req, res) => {
 });
 
 router.put("/:id", async (req, res) => {
+  if (!req.session.loggedIn) {
+    res.json({ message: "You must be logged in" });
+    return;
+  }
+  if (!req.session.user_id) {
+    res.json({ message: "invalid user" });
+    return;
+  }
+  if (req.session.user_id != req.params.id) {
+    res.json({ message: "You can only update your information" });
+    return;
+  }
   try {
     const UserToUpdate = await User.findOne({
       where: {
         id: req.params.id,
       },
     });
+
     if (!UserToUpdate) {
       res.status(404).json({ message: "No user found with this id" });
       return;
@@ -158,6 +189,10 @@ router.post("/login", (req, res) => {
 });
 
 router.post("/logout", (req, res) => {
+  if (!req.session.user_id) {
+    res.json({ message: "invalid user" });
+    return;
+  }
   if (req.session.loggedIn) {
     req.session.destroy(() => {
       res.status(204).end();
@@ -168,6 +203,14 @@ router.post("/logout", (req, res) => {
 });
 
 router.delete("/:id", (req, res) => {
+  if (!req.session.user_id) {
+    res.json({ message: "invalid user" });
+    return;
+  }
+  if (req.session.user_id != req.params.id) {
+    res.json({ message: "You can only delete your user" });
+    return;
+  }
   User.destroy({
     where: {
       id: req.params.id,
