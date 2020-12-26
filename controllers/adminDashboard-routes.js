@@ -2,8 +2,18 @@ const router = require("express").Router();
 const { User, Student, Comment, Teacher, Company } = require("../models");
 const withAuth = require("../utils/auth");
 
+// **** admin create user function will not work right now because of security in User post route
+
 // get user details for logged in person
 router.get("/", (req, res) => {
+  if (!req.session.loggedIn) {
+    res.json({ message: "You must be logged in" });
+    return;
+  }
+  if (!req.session.user_id) {
+    res.json({ message: "invalid user" });
+    return;
+  }
   if (req.session.role === "admin") {
     User.findOne({
       where: {
@@ -32,6 +42,14 @@ router.get("/", (req, res) => {
 
 // add user
 router.get("/adduser", withAuth, (req, res) => {
+  if (!req.session.loggedIn) {
+    res.json({ message: "You must be logged in" });
+    return;
+  }
+  if (!req.session.user_id) {
+    res.json({ message: "invalid user" });
+    return;
+  }
   User.findOne({
     where: {
       id: req.session.user_id,
@@ -58,7 +76,15 @@ router.get("/adduser", withAuth, (req, res) => {
 
 // get all Users for a Company
 router.get("/:id", (req, res) => {
-  if (req.session.role !== "admin") {
+  if (!req.session.loggedIn) {
+    res.json({ message: "You must be logged in" });
+    return;
+  }
+  if (!req.session.user_id) {
+    res.json({ message: "invalid user" });
+    return;
+  }
+  if (req.session.role != "admin") {
     res.json({ message: "Only Administrators can see all users" });
     return;
   }
@@ -153,6 +179,14 @@ router.get("/:id", (req, res) => {
 
 // find one teacher
 router.get("/:id", withAuth, (req, res) => {
+  if (!req.session.loggedIn) {
+    res.json({ message: "You must be logged in" });
+    return;
+  }
+  if (!req.session.user_id) {
+    res.json({ message: "invalid user" });
+    return;
+  }
   User.findOne({
     where: {
       company_id: req.session.company_id,

@@ -11,7 +11,7 @@ router.get("/", (req, res) => {
     res.json({ message: "invalid user" });
     return;
   }
-  if (!req.session.teacher_id || req.session.role != "admin") {
+  if (!req.session.teacher_id) {
     res.json({
       message: "Only Teachers and administrators can access this feature",
     });
@@ -79,7 +79,7 @@ router.post("/", (req, res) => {
     res.json({ message: "invalid user" });
     return;
   }
-  if (!req.session.teacher_id || req.session.role != "admin") {
+  if (!req.session.teacher_id) {
     res.json({ message: "You don't have permissions to create a user" });
     return;
   }

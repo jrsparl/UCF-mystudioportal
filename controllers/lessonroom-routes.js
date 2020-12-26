@@ -4,6 +4,14 @@ const withAuth = require("../utils/auth");
 const teacherAuth = require("../utils/teacherAuth");
 
 router.get("/:id", withAuth, teacherAuth, (req, res) => {
+  if (!req.session.loggedIn) {
+    res.json({ message: "You must be logged in" });
+    return;
+  }
+  if (!req.session.user_id) {
+    res.json({ message: "invalid user" });
+    return;
+  }
   req.session.student_id = req.params.id;
   Student.findOne({
     where: {
@@ -20,12 +28,11 @@ router.get("/:id", withAuth, teacherAuth, (req, res) => {
       console.log(student);
       // res.redirect("/teacherlessonroom");
       student.current_teacher_id = req.session.teacher_id;
-      if (student.teacher_id === student.current_teacher_id){
+      if (student.teacher_id === student.current_teacher_id) {
         res.render("teacherlessonroom", { student, loggedIn: true });
-      } else{
-        res.redirect("/teacherhome")
+      } else {
+        res.redirect("/teacherhome");
       }
-     
     })
     .catch((err) => {
       console.log(err);
