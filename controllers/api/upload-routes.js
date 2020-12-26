@@ -22,7 +22,18 @@ router.post("/", async (req, res) => {
     const fileUp = req.files.fileUp;
     console.log(fileUp);
 
-    const result = await cloudinary.uploader.upload(fileUp.tempFilePath);
+    const result = await cloudinary.uploader.upload(fileUp.tempFilePath, {
+      folder: "profile",
+      fetch_format: "auto",
+      transformation: [
+        {
+          width: 300,
+          height: 300,
+          crop: "fill",
+          gravity: "face",
+        },
+      ],
+    });
     console.log(result);
 
     // generating random id for the file name
