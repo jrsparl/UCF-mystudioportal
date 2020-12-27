@@ -4,7 +4,7 @@ document.querySelector("#upBtn").addEventListener("click", function () {
   const data = new FormData();
   data.append("fileUp", document.querySelector("#uploadInput").files[0]);
 
-  fetch("/api/upload", {
+  fetch("/api/imgupload", {
     method: "POST",
     body: data,
   })
