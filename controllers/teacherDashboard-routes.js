@@ -65,6 +65,31 @@ router.get("/adduser", withAuth, (req, res) => {
     });
 });
 
+router.get("/addsong", (req, res) => {
+  User.findOne({
+    where: {
+      id: req.session.user_id,
+    },
+
+    attributes: ["company_id"],
+
+    include: [
+      {
+        model: Company,
+        attributes: ["id", "company_name"],
+      },
+    ],
+  })
+    .then((dbUserData) => {
+      const user = dbUserData.get({ plain: true });
+      res.render("addsong", { user, loggedIn: true });
+    })
+    .catch((err) => {
+      console.log(err);
+      res.status(500).json(err);
+    });
+});
+
 // create teacher profile
 router.get("/createteacherprofile", withAuth, (req, res) => {
   User.findOne({

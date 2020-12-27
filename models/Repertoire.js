@@ -22,7 +22,7 @@ Repertoire.init(
       type: DataTypes.STRING,
       allowNull: false,
     },
-    song_writter: {
+    song_writer: {
       type: DataTypes.STRING,
       allowNull: false,
     },

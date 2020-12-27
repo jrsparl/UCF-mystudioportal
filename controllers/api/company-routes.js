@@ -38,10 +38,10 @@ router.get("/:id", (req, res) => {
 });
 
 router.post("/", (req, res) => {
-  if (!req.session.user_id) {
-    res.json({ message: "invalid user" });
-    return;
-  }
+  // if (!req.session.user_id) {
+  //   res.json({ message: "invalid user" });
+  //   return;
+  // }
   Company.create({
     company_name: req.body.company_name,
     street_address: req.body.street_address,

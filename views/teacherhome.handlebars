@@ -29,42 +29,45 @@
           <br>
         </div>
       </div>
-    </div>
 
-    <div class="col-md-8">
-      <div class="row" id="student-card-holder">
+     
 
-      </div>
-    </div>
-  </div>
-</div>
+      <div class="col-md-8">
+        <div class="row" id="student-card-holder">
 
-
-
-
-
-{{else}}
-<div class="white-text">
-  <h3>Please create your profile to get started!</h3>
-  <div class="row">
-    <div class="col-3">
-      <div class="card bg-primary text-light" style="width: 18rem;">
-        <div class="card-body">
-          <h4 class="card-text"> {{user.first_name}} {{user.last_name}} </h4>
         </div>
-        <img src="../images/empty-profilepic.png" class="card-img-top" alt="profile picture">
-        <ul class="list-group list-group-flush">
-          <li class="list-group-item bg-primary">
-            
-            <a class="card-link btn btn-light" href="/teacherhome/createteacherprofile">Create My Profile!</a>
-          </li>
-        </ul>
       </div>
     </div>
   </div>
-</div>
+
+
+
+
+
+  {{else}}
+  <div class="white-text">
+    <h3>Please create your profile to get started!</h3>
+    <div class="row">
+      <div class="col-3">
+        <div class="card bg-primary text-light" style="width: 18rem;">
+          <div class="card-body">
+            <h4 class="card-text"> {{user.first_name}} {{user.last_name}} </h4>
+          </div>
+          <img src="../images/empty-profilepic.png" class="card-img-top" alt="profile picture">
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item bg-primary">
+
+              <a class="card-link btn btn-light" href="/teacherhome/createteacherprofile">Create My Profile!</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
 {{/if}}
 
 
+
+<script src="/javascript/audioupload.js"></script>
 <script src="/javascript/getmystudents.js"></script>

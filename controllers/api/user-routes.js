@@ -75,14 +75,14 @@ router.get("/:id", (req, res) => {
 });
 
 router.post("/", (req, res) => {
-  if (!req.session.user_id) {
-    res.json({ message: "invalid user" });
-    return;
-  }
-  if (!req.session.teacher_id) {
-    res.json({ message: "You don't have permissions to create a user" });
-    return;
-  }
+  // if (!req.session.user_id) {
+  //   res.json({ message: "invalid user" });
+  //   return;
+  // }
+  // if (!req.session.teacher_id) {
+  //   res.json({ message: "You don't have permissions to create a user" });
+  //   return;
+  // }
   User.create({
     username: req.body.username,
     email: req.body.email,
