@@ -23,7 +23,7 @@ router.post("/", async (req, res) => {
     console.log(fileUp);
 
     const result = await cloudinary.uploader.upload(fileUp.tempFilePath, {
-      folder: "profile",
+      folder: "profile-pic",
       fetch_format: "auto",
       transformation: [
         {
