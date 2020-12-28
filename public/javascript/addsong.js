@@ -1,35 +1,33 @@
-async function UserFormHandler(event) {
-    event.preventDefault();
+async function SongFormHandler(event) {
+  event.preventDefault();
 
-    const songName = document.querySelector('#song-name').value.trim();
-    const songAlbum = document.querySelector('#song-album').value.trim();
-    const songArtist = document.querySelector('#song-artist').value.trim();
-    const audioFile = fileName;
+  const song_name = document.querySelector("#song-name").value.trim();
+  const album_name = document.querySelector("#song-album").value.trim();
+  const song_writer = document.querySelector("#song-artist").value.trim();
+  const company_id = document.getElementById("company-id").textContent;
+  const path = fileName;
 
-    let dataObject ={
-        songName,
-        songAlbum,
-        songArtist,
-        audioFile
-    };
-    
+  const response = await fetch("/api/teachers/song", {
+    method: "post",
+    body: JSON.stringify({
+      song_name,
+      album_name,
+      song_writer,
+      company_id,
+      path,
+    }),
+    headers: { "Content-Type": "application/json" },
+  });
 
-    if (birthday && coaching_genre && coaching_level && user_id) {
-        const response = await fetch('/api/repertoire/', {
-            method: 'post',
-            body: JSON.stringify(dataObject),
-            headers: { 'Content-Type': 'application/json' }
-        });
-
-
-        if (response.ok) {
-            console.log('song added')
-            document.location.replace('/addsong')
-                
-        } else {
-            alert(response.statusText);
-        }
-    }
+  if (response.ok) {
+    console.log("song added");
+    document.location.replace("/teacherhome/addsong");
+  } else {
+    console.log("oh no");
+    alert(response.statusText);
+  }
 }
 
-document.querySelector('.audio-upload').addEventListener('submit', UserFormHandler);
+document
+  .querySelector(".audio-upload")
+  .addEventListener("submit", SongFormHandler);

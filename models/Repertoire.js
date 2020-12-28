@@ -20,19 +20,19 @@ Repertoire.init(
     },
     song_name: {
       type: DataTypes.STRING,
-      allowNull: false,
+      allowNull: true,
     },
     song_writer: {
       type: DataTypes.STRING,
-      allowNull: false,
+      allowNull: true,
     },
     album_name: {
       type: DataTypes.STRING,
-      allowNull: false,
+      allowNull: true,
     },
     path: {
       type: DataTypes.STRING,
-      allowNull: false,
+      allowNull: true,
     },
   },
   {

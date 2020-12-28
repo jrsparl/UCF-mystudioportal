@@ -3,20 +3,20 @@ const { User, Teacher, Student } = require("../../models");
 const withAuth = require("../../utils/auth");
 
 router.get("/", (req, res) => {
-  if (!req.session.loggedIn) {
-    res.json({ message: "You must be logged in" });
-    return;
-  }
-  if (!req.session.user_id) {
-    res.json({ message: "invalid user" });
-    return;
-  }
-  if (!req.session.teacher_id) {
-    res.json({
-      message: "Only Teachers and administrators can access this feature",
-    });
-    return;
-  }
+  // if (!req.session.loggedIn) {
+  //   res.json({ message: "You must be logged in" });
+  //   return;
+  // }
+  // if (!req.session.user_id) {
+  //   res.json({ message: "invalid user" });
+  //   return;
+  // }
+  // if (!req.session.teacher_id) {
+  //   res.json({
+  //     message: "Only Teachers and administrators can access this feature",
+  //   });
+  //   return;
+  // }
 
   User.findAll({
     // attributes: { exclude: ["password"] },

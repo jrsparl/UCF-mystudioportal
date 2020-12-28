@@ -1,5 +1,5 @@
 const router = require("express").Router();
-const { Teacher, User, Student } = require("../../models");
+const { Teacher, User, Student, Repertoire } = require("../../models");
 
 router.get("/", (req, res) => {
   if (!req.session.loggedIn) {
@@ -192,6 +192,24 @@ router.post("/user", (req, res) => {
     .catch((err) => {
       console.log(err);
       res.status(500).json(err);
+    });
+});
+
+router.post("/song", (req, res) => {
+  Repertoire.create({
+    song_name: req.body.song_name,
+    song_writer: req.body.song_writer,
+    album_name: req.body.album_name,
+    path: req.body.path,
+    company_id: req.body.company_id,
+  })
+    .then((dbRepertoireData) => {
+      res.json(dbRepertoireData);
+    })
+
+    .catch((err) => {
+      console.log(err);
+      res.status(400).json(err);
     });
 });
 

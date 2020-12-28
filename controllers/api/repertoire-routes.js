@@ -15,14 +15,14 @@ router.get("/", (req, res) => {
 });
 
 router.get("/:id", (req, res) => {
-  if (!req.session.loggedIn) {
-    res.json({ message: "You must be logged in" });
-    return;
-  }
-  if (!req.session.user_id) {
-    res.json({ message: "invalid user" });
-    return;
-  }
+  // if (!req.session.loggedIn) {
+  //   res.json({ message: "You must be logged in" });
+  //   return;
+  // }
+  // if (!req.session.user_id) {
+  //   res.json({ message: "invalid user" });
+  //   return;
+  // }
   Repertoire.findOne({
     where: {
       id: req.params.id,
@@ -50,8 +50,10 @@ router.post("/", (req, res) => {
     song_writer: req.body.song_writer,
     album_name: req.body.album_name,
     path: req.body.path,
+    company_id: req.body.company_id,
   })
     .then((dbRepertoireData) => res.json(dbRepertoireData))
+
     .catch((err) => {
       console.log(err);
       res.status(400).json(err);

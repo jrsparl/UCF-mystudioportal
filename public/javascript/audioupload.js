@@ -14,10 +14,10 @@ document.querySelector("#upBtn").addEventListener("click", function () {
         console.log(result);
         console.log(result.data.name);
         fileName = result.data.name;
+        console.log(fileName);
       });
     })
     .catch(() => {
       this.textContent = "Error";
     });
 });
-
