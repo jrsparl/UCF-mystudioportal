@@ -17,17 +17,17 @@
         {{/if}}
         <ul class="list-group list-group-flush">
           <li class="list-group-item bg-primary">
-            <h5 id="teacher-id-detail">Teacher ID: {{user.teacher.id}}</h5>
-          </li>
-          <li class="list-group-item bg-primary">
+            <h5 class="card-text" id="teacher-id-detail">Teacher ID: {{user.teacher.id}}</h5>
             <h5>Genre: {{user.teacher.coaching_genre}}</h5>
+            </br>
+            {{!-- <div class="card-body"> --}}
+              <a class="card-link white-text btn btn-dark w-100" href="/teacherhome/teacherprofile">View Profile</a>
+              <button type="button" id="get-students" class="white-text btn btn-dark w-100">View Class</button>
+              <br>
+              {{!--
+            </div> --}}
           </li>
         </ul>
-        <div class="card-body">
-          <a class="card-link white-text btn btn-dark" href="/teacherhome/teacherprofile">View Profile</a>
-          <button type="button" id="get-students" class="white-text btn btn-dark">View Class</button>
-          <br>
-        </div>
       </div>
     </div>
 

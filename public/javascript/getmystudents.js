@@ -26,7 +26,8 @@ var displayStudent = function(studentData) {
     for (var i = 0; i < studentData.length; i++) {
         let firstName = studentData[i].user.first_name;
         let lastName = studentData[i].user.last_name;
-        let studentID = studentData[i].id
+        let studentID = studentData[i].id;
+        let vocalStyle = studentData[i].vocal_style;
         if (studentData[i].profile_pic) {
             var imgSource = studentData[i].profile_pic;
         } else {
@@ -55,6 +56,11 @@ var displayStudent = function(studentData) {
         studentNameEl.classList = "card-text";
         studentNameEl.textContent = firstName + " " + lastName;
         studentContentEL.appendChild(studentNameEl);
+        //add vocal style to card
+        let vocalStyleEl = document.createElement("p");
+        vocalStyleEl.classList = "card-text";
+        vocalStyleEl.textContent = vocalStyle;
+        studentContentEL.appendChild(vocalStyleEl);
         // debugger
         let studentButton = document.createElement("a")
         studentButton.classList = "white-text btn btn-secondary lesson-button";
