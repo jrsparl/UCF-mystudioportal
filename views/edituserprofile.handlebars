@@ -35,7 +35,12 @@
             </div>
 
             <button type="submit" class="btn btn-light">Save</button>
-            <a type="button" href="../" class="btn btn-primary">back</a><br>
+            {{#if user.teacher.id}}
+            <a type="button" href="/teacherhome/userprofile" class="btn btn-primary">back</a><br>
+            {{/if}}
+            {{#if user.student.id}}
+            <a type="button" href="/studenthome/userprofile" class="btn btn-primary">back</a><br>
+            {{/if}}
         </form>
     </div>
 

@@ -50,6 +50,9 @@ router.get("/adduser", withAuth, (req, res) => {
 
     include: [
       {
+        model: Teacher,
+      },
+      {
         model: Company,
         attributes: ["id", "company_name"],
       },
@@ -74,6 +77,9 @@ router.get("/addsong", (req, res) => {
     attributes: ["company_id"],
 
     include: [
+      {
+        model: Teacher,
+      },
       {
         model: Company,
         attributes: ["id", "company_name"],
