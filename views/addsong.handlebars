@@ -1,12 +1,67 @@
 <div class="card profile-home p-4 white-text">
 
-    <div class="card-body audio-upload">
+    <div class="card-body">
         <label for="add-song">Upload Audio File</label>
         <div>
-            <input id="uploadInput" type="file" name="FileUp" method="post" enctype="multipart/form-data" />
+            <button id="upload_widget" class="cloudinary-button" type="file" name="FileUp" method="post"
+                enctype="multipart/form-data">Upload files</button>
+
+            <script src="https://widget.cloudinary.com/v2.0/global/all.js" type="text/javascript"></script>
+
+            <script type="text/javascript">
+                var myWidget = cloudinary.createUploadWidget({
+                    cloudName: 'my-studio-portal',
+                    uploadPreset: 'n46r86kn'
+                }, (error, result) => {
+                    if (!error && result && result.event === "success") {
+                        console.log('Done! Here is the image info: ', result.info);
+                        async function SongFormHandler(event) {
+                            event.preventDefault();
+
+                            const song_name = document.querySelector("#song-name").value.trim();
+                            const album_name = document.querySelector("#song-album").value.trim();
+                            const song_writer = document.querySelector("#song-artist").value.trim();
+                            const company_id = document.getElementById("company-id").textContent;
+                            const path = result.info.secure_url;
+
+                            const response = await fetch("/api/teachers/song", {
+                                method: "post",
+                                body: JSON.stringify({
+                                    song_name,
+                                    album_name,
+                                    song_writer,
+                                    company_id,
+                                    path,
+                                }),
+                                headers: { "Content-Type": "application/json" },
+                            });
+
+                            if (response.ok) {
+                                console.log("song added");
+                                console.log(path)
+                                document.location.replace("/teacherhome/addsong");
+                            } else {
+                                console.log("oh no");
+                                alert(response.statusText);
+                            }
+                        }
+                        document
+                            .querySelector(".audio-upload")
+                            .addEventListener("submit", SongFormHandler);
+                    }
+
+                }
+                )
+                document.getElementById("upload_widget").addEventListener("click", function () {
+                    myWidget.open();
+                }, false);
+            </script>
+
+
+            {{!-- <input id="uploadInput" type="file" name="FileUp" method="post" enctype="multipart/form-data" />
             <div>
                 <button type="button" id="upBtn">Upload File</button>
-            </div>
+            </div> --}}
         </div>
         <form class="audio-upload">
             <div class="form-group row">
@@ -43,5 +98,7 @@
 
 <br>
 
-<script src="/javascript/audioupload.js"></script>
-<script src="/javascript/addsong.js"></script>
+{{!--
+<script src="/javascript/audioupload.js"></script> --}}
+{{!--
+<script src="/javascript/addsong.js"></script> --}}
