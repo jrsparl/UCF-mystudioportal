@@ -5,7 +5,7 @@
   </h1>
   <div class="row">
     <div class="col-3">
-      <div class="card bg-primary white-text" style="width: 18rem;">
+      <div class="card bg-primary text-dark" style="width: 18rem;">
         <div class="card-body">
           <h4 class="card-text"> {{user.first_name}} {{user.last_name}} </h4>
         </div>
@@ -17,57 +17,53 @@
         {{/if}}
 
         <ul class="list-group list-group-flush">
-          <li class="list-group-item bg-primary">
+          <div class="list-group-item bg-primary">
             <h5 id="student-id-detail">Student ID: {{user.student.id}}</h5>
-          </li>
-          <li class="list-group-item bg-primary">
             <h5>Teacher ID: {{user.student.teacher_id}}</h5>
-          </li>
-        </ul>
-        <div class="card-body">
-          <a class="card-link white-text btn btn-dark" href="/studenthome/studentprofile">View Profile</a>
+            {{!-- <h5>Teacher name: </h5> --}}
+          <a class="card-link btn btn-dark w-50" href="/studenthome/studentprofile">View Profile</a>
+          
           {{!-- <button type="button" id="get-students" class="white-text btn btn-dark">View Class</button> --}}
           <br>
-        </div>
+        </ul>
       </div>
     </div>
 
     <div class="col-12 col-lg-5 rounded-lg">
-            <iframe
-                class="col-12 rounded-lg"
-                src="https://tokbox.com/embed/embed/ot-embed.js?embedId=8325314b-c95e-494e-a489-185f9c40ba59&room={{user.student.room_number}}&iframe=true"
-                width="500px" height="400px" scrolling="no" allow="microphone; camera" frameborder="0   "> 
-            </iframe>
-            <form class="comment-form col-12">
-            
-                <div>
-            
-                    
-                    <button type="button" class="btn btn-secondary btn-lg m-1" id="view-comments">View Comments</button>
-                  
-            
-            
-                </div>
-            </form>
-            
+      <iframe class="col-12 rounded-lg"
+        src="https://tokbox.com/embed/embed/ot-embed.js?embedId=8325314b-c95e-494e-a489-185f9c40ba59&room={{user.student.room_number}}&iframe=true"
+        width="500px" height="400px" scrolling="no" allow="microphone; camera" frameborder="0   ">
+      </iframe>
+      <form class="comment-form col-12">
+
+        <div>
+
+
+          <button type="button" class="btn btn-secondary btn-lg m-1" id="view-comments">View Comments</button>
+
+
+
         </div>
-        <div class="col-4" id="comment-holder">
-            {{!-- <div class="card">
-                <div class="card-body bg-secondary text-light">
-                    <ul class="list-group list-group-flush">
-                        <li class="list-group-item bg-secondary">
-                        <p>Created: Created Date</p>
-                        </li>
-                        <li class="list-group-item bg-secondary">
-                        <p>Teacher: Teacher Name</p>
-                        </li>
-                        <li class="list-group-item bg-secondary">
-                        <p>Comment: a pluribus unum umbrella</p>
-                        </li>
-                    </ul>
-                </div>
-            </div> --}}
+      </form>
+
+    </div>
+    <div class="col-4" id="comment-holder">
+      {{!-- <div class="card">
+        <div class="card-body bg-secondary text-light">
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item bg-secondary">
+              <p>Created: Created Date</p>
+            </li>
+            <li class="list-group-item bg-secondary">
+              <p>Teacher: Teacher Name</p>
+            </li>
+            <li class="list-group-item bg-secondary">
+              <p>Comment: a pluribus unum umbrella</p>
+            </li>
+          </ul>
         </div>
+      </div> --}}
+    </div>
 
 
 
@@ -118,14 +114,14 @@
 
 
 {{!-- <div class="profile-home">
-    <h1>
-        You are logged in as a student
-    </h1>
-    <div class="card-body">
-        <h4 class="card-text"> {{user.first_name}} {{user.last_name}} </h4>
-    </div>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <a class="navbar-brand" href="/studenthome/createstudentprofile">Create My Profile</a>
-        <a class="navbar-brand" href="/studenthome/editstudentprofile">Edit My Profile</a>
-    </nav>
+  <h1>
+    You are logged in as a student
+  </h1>
+  <div class="card-body">
+    <h4 class="card-text"> {{user.first_name}} {{user.last_name}} </h4>
+  </div>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <a class="navbar-brand" href="/studenthome/createstudentprofile">Create My Profile</a>
+    <a class="navbar-brand" href="/studenthome/editstudentprofile">Edit My Profile</a>
+  </nav>
 </div> --}}

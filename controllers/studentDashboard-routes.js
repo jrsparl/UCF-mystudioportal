@@ -120,6 +120,12 @@ router.get("/", (req, res) => {
         {
           model: Student,
         },
+        {
+          model: Teacher,
+          include: {
+            model: User,
+          },
+        },
       ],
     })
       .then((dbUserData) => {

@@ -6,7 +6,7 @@
   </h1>
   <div class="row sm">
     <div class="col-md-3">
-      <div class="card bg-primary text-light" style="width: 18rem;">
+      <div class="card bg-primary text-dark" style="width: 18rem;">
         <div class="card-body">
           <h4 class="card-text"> {{user.first_name}} {{user.last_name}} </h4>
         </div>
@@ -16,17 +16,19 @@
         <img src="../images/empty-profilepic.png" class="card-img-top" alt="profile picture">
         {{/if}}
         <ul class="list-group list-group-flush">
-          <li class="list-group-item bg-primary">
+          <div class="list-group-item bg-primary">
             <h5 class="card-text" id="teacher-id-detail">Teacher ID: {{user.teacher.id}}</h5>
             <h5>Genre: {{user.teacher.coaching_genre}}</h5>
             </br>
             {{!-- <div class="card-body"> --}}
-              <a class="card-link white-text btn btn-dark w-100" href="/teacherhome/teacherprofile">View Profile</a>
-              <button type="button" id="get-students" class="white-text btn btn-dark w-100">View Class</button>
-              <br>
+              <div class="row">
+              <a class="card-link btn btn-primary w-50" href="/teacherhome/teacherprofile">View Profile</a>
+              <button type="button" id="get-students" class="btn btn-secondary w-50">View Class</button>
+              <a class="card-link btn btn-danger w-100 mt-1" href="/teacherhome/addsong">Add Song</a>
+              </div>
               {{!--
             </div> --}}
-          </li>
+          </div>
         </ul>
       </div>
     </div>

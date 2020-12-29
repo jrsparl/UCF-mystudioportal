@@ -4,63 +4,61 @@
     </h1>
     <div class="row mb-5">
         <div class="col-3">
-            <div class="card bg-primary" style="width: 18rem;">
-                <div class="card-body white-text">
+            <div class="card bg-primary text-dark" style="width: 18rem;">
+                <div class="card-body ">
                     <h4 class="card-text"> {{student.user.first_name}} {{student.user.last_name}} </h4>
                 </div>
                 <img src="{{student.profile_pic}}" class="card-img-top" alt="Test image">
 
-                <ul class="list-group list-group-flush white-text">
-                    <li class="list-group-item bg-primary">
+                <ul class="list-group list-group-flush ">
+                    <div class="list-group-item bg-primary">
                         <p id="student-id-detail">Student ID: {{student.id}}</p>
-                    </li>
-                    <li class="list-group-item bg-primary">
                         <p>Vocal Part: {{student.vocal_part_name}}</p>
-                    </li>
-                    <li class="list-group-item bg-primary">
                         <p>Primary Style: {{student.vocal_style}}</p>
-                    </li>
-                    <li class="list-group-item bg-primary">
                         <p>Grade Level: {{student.grade_level}}</p>
-                    </li>
+                    </div>
+
+
                 </ul>
             </div>
         </div>
-        
+
         <div class="col-12 col-lg-5 rounded-lg">
-            <iframe
-                class="col-12 rounded-lg"
+            <iframe class="col-12 rounded-lg"
                 src="https://tokbox.com/embed/embed/ot-embed.js?embedId=8325314b-c95e-494e-a489-185f9c40ba59&room={{student.room_number}}&iframe=true"
-                width="500px" height="400px" scrolling="no" allow="microphone; camera" frameborder="0   "> 
+                width="500px" height="400px" scrolling="no" allow="microphone; camera" frameborder="0   ">
             </iframe>
             <form class="comment-form col-12">
                 <div>
                     <textarea class="form-control m-auto" rows="5" name="comment-body"></textarea>
                 </div>
-            
+
                 <div>
-            
+
                     <button type="submit" class="btn btn-primary btn-sm m-1">Add Comment</button>
                     <button type="button" class="btn btn-secondary btn-sm m-1" id="view-comments">View Comments</button>
-                    <a href="/teacherhome" class="btn btn-secondary btn-sm m-1" id="view-comments">Home page</a>
-            
-            
+                    <a class="card-link btn btn-danger btn-sm m-1" href="/teacherhome/addsong" target="popup"
+                        onclick="window.open('/teacherhome/addsong','name','width=700,height=900')">Add
+                        Song</a>
+                    <a href="/teacherhome" class="btn btn-secondary btn-sm m-1 w-25" id="view-comments">Home page</a>
+
+
                 </div>
             </form>
-            
+
         </div>
         <div class="col-4" id="comment-holder">
             {{!-- <div class="card">
                 <div class="card-body bg-secondary text-light">
                     <ul class="list-group list-group-flush">
                         <li class="list-group-item bg-secondary">
-                        <p>Created: Created Date</p>
+                            <p>Created: Created Date</p>
                         </li>
                         <li class="list-group-item bg-secondary">
-                        <p>Teacher: Teacher Name</p>
+                            <p>Teacher: Teacher Name</p>
                         </li>
                         <li class="list-group-item bg-secondary">
-                        <p>Comment: a pluribus unum umbrella</p>
+                            <p>Comment: a pluribus unum umbrella</p>
                         </li>
                     </ul>
                 </div>

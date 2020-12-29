@@ -3,19 +3,25 @@ const { nanoid } = require("nanoid");
 const { Student, User, Comment, Teacher, Company } = require("../../models");
 
 router.get("/", (req, res) => {
-  if (!req.session.loggedIn) {
-    res.json({ message: "You must be logged in" });
-    return;
-  }
-  if (!req.session.user_id) {
-    res.json({ message: "invalid user" });
-    return;
-  }
+  // if (!req.session.loggedIn) {
+  //   res.json({ message: "You must be logged in" });
+  //   return;
+  // }
+  // if (!req.session.user_id) {
+  //   res.json({ message: "invalid user" });
+  //   return;
+  // }
   Student.findAll({
     order: [["created_at", "DESC"]],
     include: [
       {
         model: User,
+      },
+      {
+        model: Teacher,
+        include: {
+          model: User,
+        },
       },
     ],
   })
