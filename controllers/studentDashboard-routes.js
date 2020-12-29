@@ -119,12 +119,15 @@ router.get("/", (req, res) => {
       include: [
         {
           model: Student,
-        },
-        {
-          model: Teacher,
-          include: {
-            model: User,
-          },
+          include: [
+            {
+              model: Teacher,
+              include: {
+                model: User,
+                attributes: ["username", "first_name", "last_name", "email"]
+              },
+            },
+          ],
         },
       ],
     })

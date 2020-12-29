@@ -20,8 +20,10 @@
           <div class="list-group-item bg-primary">
             <h5 id="student-id-detail">Student ID: {{user.student.id}}</h5>
             <h5>Teacher ID: {{user.student.teacher_id}}</h5>
-            {{!-- <h5>Teacher name: </h5> --}}
-          <a class="card-link btn btn-dark w-50" href="/studenthome/studentprofile">View Profile</a>
+            <h5>Teacher: {{user.student.teacher.user.first_name}} {{user.student.teacher.user.last_name}} 
+            {{!-- <img src="{{user.student.teacher.profile_pic}}" class="card-img-top img-thumbnail w-25" alt="profile picture"> --}}
+            </h5>
+          <a class="card-link btn btn-dark text-dark w-50" href="/studenthome/studentprofile">View Profile</a>
           
           {{!-- <button type="button" id="get-students" class="white-text btn btn-dark">View Class</button> --}}
           <br>

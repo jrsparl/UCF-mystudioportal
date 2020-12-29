@@ -21,6 +21,7 @@ router.get("/", (req, res) => {
         model: Teacher,
         include: {
           model: User,
+          attributes: ["username", "first_name", "last_name", "email"],
         },
       },
     ],
@@ -33,14 +34,14 @@ router.get("/", (req, res) => {
 });
 
 router.get("/:id", (req, res) => {
-  if (!req.session.loggedIn) {
-    res.json({ message: "You must be logged in" });
-    return;
-  }
-  if (!req.session.user_id) {
-    res.json({ message: "invalid user" });
-    return;
-  }
+  // if (!req.session.loggedIn) {
+  //   res.json({ message: "You must be logged in" });
+  //   return;
+  // }
+  // if (!req.session.user_id) {
+  //   res.json({ message: "invalid user" });
+  //   return;
+  // }
   Student.findOne({
     where: {
       id: req.params.id,
@@ -53,7 +54,7 @@ router.get("/:id", (req, res) => {
         model: Teacher,
         include: {
           model: User,
-          attributes: ["username", "first_name", "last_name"],
+          attributes: ["username", "first_name", "last_name", "email"],
         },
       },
     ],
